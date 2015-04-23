@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <ResearchKit/ResearchKit.h>
+#import <MORK/MORK.h>
 
 @interface MORKTests : XCTestCase
 
@@ -18,7 +19,7 @@
 
 - (void)setUp {
     [super setUp];
-
+    
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -29,6 +30,7 @@
 
 - (void)testExample {
     // This is an example of a functional test case.
+    [ORKCollectionResult doSomething];
     XCTAssert(YES, @"Pass");
 }
 
