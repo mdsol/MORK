@@ -1,0 +1,17 @@
+PODS:
+  - MORK (0.0.1):
+    - ResearchKit
+  - ResearchKit (1.0.0)
+
+DEPENDENCIES:
+  - MORK (from `.`)
+
+EXTERNAL SOURCES:
+  MORK:
+    :path: .
+
+SPEC CHECKSUMS:
+  MORK: f910fb1ad5063770a0174067e400545806f79b23
+  ResearchKit: 86f9101e2091007006a06999fc2376cc42b2243b
+
+COCOAPODS: 0.35.0
