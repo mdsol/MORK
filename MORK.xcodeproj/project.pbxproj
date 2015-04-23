@@ -10,9 +10,24 @@
 		5292A2A51AE93A0800D24393 /* MORK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5292A2A41AE93A0800D24393 /* MORK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5292A2AB1AE93A0800D24393 /* MORK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5292A29F1AE93A0800D24393 /* MORK.framework */; };
 		5292A2B21AE93A0800D24393 /* MORKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5292A2B11AE93A0800D24393 /* MORKTests.m */; };
+		E57B29066A6D59EB4B7D7F38 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF511F152188B07983A690EF /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5244B0B61AE93C1B0036A017 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5244B0B11AE93C1A0036A017 /* MORKExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5244B0881AE93C1A0036A017;
+			remoteInfo = MORKExample;
+		};
+		5244B0B81AE93C1B0036A017 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5244B0B11AE93C1A0036A017 /* MORKExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5244B0A11AE93C1A0036A017;
+			remoteInfo = MORKExampleTests;
+		};
 		5292A2AC1AE93A0800D24393 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5292A2961AE93A0800D24393 /* Project object */;
@@ -23,12 +38,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		385DDCE4447685FAA1BC5066 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5244B0B11AE93C1A0036A017 /* MORKExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MORKExample.xcodeproj; path = MORKExample/MORKExample.xcodeproj; sourceTree = "<group>"; };
 		5292A29F1AE93A0800D24393 /* MORK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MORK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292A2A31AE93A0800D24393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5292A2A41AE93A0800D24393 /* MORK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MORK.h; sourceTree = "<group>"; };
 		5292A2AA1AE93A0800D24393 /* MORKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MORKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292A2B01AE93A0800D24393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5292A2B11AE93A0800D24393 /* MORKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MORKTests.m; sourceTree = "<group>"; };
+		72151811C4DF83B99BD17B7E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AF511F152188B07983A690EF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E57B29066A6D59EB4B7D7F38 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,12 +70,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5244B0B21AE93C1A0036A017 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5244B0B71AE93C1B0036A017 /* MORKExample.app */,
+				5244B0B91AE93C1B0036A017 /* MORKExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5292A2951AE93A0800D24393 = {
 			isa = PBXGroup;
 			children = (
+				5244B0B11AE93C1A0036A017 /* MORKExample.xcodeproj */,
 				5292A2A11AE93A0800D24393 /* MORK */,
 				5292A2AE1AE93A0800D24393 /* MORKTests */,
 				5292A2A01AE93A0800D24393 /* Products */,
+				D1DA9E2076604880A4F0F01E /* Pods */,
+				7BBBB099261A2FA7877C8B58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +134,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7BBBB099261A2FA7877C8B58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF511F152188B07983A690EF /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D1DA9E2076604880A4F0F01E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				385DDCE4447685FAA1BC5066 /* Pods.debug.xcconfig */,
+				72151811C4DF83B99BD17B7E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -120,10 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5292A2B51AE93A0800D24393 /* Build configuration list for PBXNativeTarget "MORK" */;
 			buildPhases = (
+				5E2D7377D1558838B737E527 /* Check Pods Manifest.lock */,
 				5292A29A1AE93A0800D24393 /* Sources */,
 				5292A29B1AE93A0800D24393 /* Frameworks */,
 				5292A29C1AE93A0800D24393 /* Headers */,
 				5292A29D1AE93A0800D24393 /* Resources */,
+				87BB1431F1F583AC872FC67F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,6 +230,12 @@
 			mainGroup = 5292A2951AE93A0800D24393;
 			productRefGroup = 5292A2A01AE93A0800D24393 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5244B0B21AE93C1A0036A017 /* Products */;
+					ProjectRef = 5244B0B11AE93C1A0036A017 /* MORKExample.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5292A29E1AE93A0800D24393 /* MORK */,
@@ -186,6 +243,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5244B0B71AE93C1B0036A017 /* MORKExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MORKExample.app;
+			remoteRef = 5244B0B61AE93C1B0036A017 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5244B0B91AE93C1B0036A017 /* MORKExampleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MORKExampleTests.xctest;
+			remoteRef = 5244B0B81AE93C1B0036A017 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5292A29D1AE93A0800D24393 /* Resources */ = {
@@ -203,6 +277,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E2D7377D1558838B737E527 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		87BB1431F1F583AC872FC67F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5292A29A1AE93A0800D24393 /* Sources */ = {
@@ -321,6 +428,7 @@
 		};
 		5292A2B61AE93A0800D24393 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 385DDCE4447685FAA1BC5066 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -336,6 +444,7 @@
 		};
 		5292A2B71AE93A0800D24393 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72151811C4DF83B99BD17B7E /* Pods.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -398,6 +507,7 @@
 				5292A2B71AE93A0800D24393 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5292A2B81AE93A0800D24393 /* Build configuration list for PBXNativeTarget "MORKTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +516,7 @@
 				5292A2BA1AE93A0800D24393 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
