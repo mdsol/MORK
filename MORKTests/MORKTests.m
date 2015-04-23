@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <ResearchKit/ResearchKit.h>
 
 @interface MORKTests : XCTestCase
 
