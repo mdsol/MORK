@@ -1,8 +1,8 @@
 # Patient Cloud / ResearchKit Integration
 
 ## Common Fields
-Most Rave fields can be represented by an ORKQuestionStep. Special fields such as consent forms and form submission can be represented by
-other subclasses of ORKStep (ORKVisualConsentStep, ORKCompletionStep).
+Most Rave fields can be represented by an `ORKQuestionStep`. Special fields such as consent forms and form submission can be represented by
+other subclasses of `ORKStep` (`ORKVisualConsentStep`, `ORKCompletionStep`).
 
 If multiple questions should be shown on a single, scrollable page, an ORKFormStep can be used to encapsulate multiple ORKSteps
 
@@ -50,19 +50,19 @@ Many Patient Cloud controls also have ResearchKit equivalents:
 ## Specific Control Types
 
 ### Text & Long Text
-RK Control: ORKTextAnswerFormat or ORKNumericAnswerFormat
+RK Control: `ORKTextAnswerFormat` or `ORKNumericAnswerFormat`
 
 Depending on the nature of the data, either text or a numeric value can be captured.
 
 
 ### Date / Time
-RK Control: ORKDateAnswerFormat or ORKTimeIntervalAnswerFormat or ORKTimeOfDayAnswerFormat
+RK Control: `ORKDateAnswerFormat` or `ORKTimeIntervalAnswerFormat` or `ORKTimeOfDayAnswerFormat`
 
-While technically the DateTime control could be represented by an ORKTextAnswerFormat control, using an ORKDateAnswerFormat will avoid the need to implement complicated Date validations.
+While technically the DateTime control could be represented by an `ORKTextAnswerFormat` control, using an `ORKDateAnswerFormat` will avoid the need to implement complicated Date validations.
 
 
 ### Check Box
-RK Control: ORKTextChoiceAnswerFormat
+RK Control: `ORKTextChoiceAnswerFormat`
 
 Specifying the `ORKChoiceAnswerStyleMultipleChoice` when creating a question with `ORKTextChoiceAnswerFormat` will allow the user to select multiple choices.
 
@@ -76,9 +76,9 @@ Specifying the `ORKChoiceAnswerStyleMultipleChoice` when creating a question wit
 ### Drop Down List / Radio Button
 Used to produce a sequence of Radio Buttons or a Drop Down
 
-RK Control: ORKTextChoiceAnswerFormat or ORKValuePickerAnswerFormat
+RK Control: `ORKTextChoiceAnswerFormat` or `ORKValuePickerAnswerFormat`
 
-An ORKTextChoiceAnswerFormat will list all options at once, whereas a ORKValuePickerAnswerFormat provides
+An `ORKTextChoiceAnswerFormat` will list all options at once, whereas a `ORKValuePickerAnswerFormat` provides
 a scrollable list that shows only a view items at once.
 
 | Rave Architect Field | ResearchKit Field            |
@@ -89,9 +89,9 @@ a scrollable list that shows only a view items at once.
 
 
 ### Signature
-RK Control: ORKConsentReviewStep + ORKConsentSignature
+RK Control: `ORKConsentReviewStep` + `ORKConsentSignature`
 
-The ORKConsentReviewStep can be used to ask a subject for their consent and can produce an ORKConstentSignature instance containing the relevant data.
+The `ORKConsentReviewStep` can be used to ask a subject for their consent and can produce an `ORKConstentSignature` instance containing the relevant data.
 
 
 ## Active Tasks
