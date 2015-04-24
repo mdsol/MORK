@@ -117,3 +117,6 @@ Basic Rave Formatting and Validation can be implemented in ResearchKit using the
 
 For more advanced validations, the `[ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html)` can be implemented. This delegate provides methods for finer-grained control over individual steps.
 
+
+## Branching Questions / Edit Checks
+To show conditional steps based on user input, `ORKOrderedTask` can be subclassed and the `stepAfterStep` and `stepBeforeStep` methods overwritten. An example of this tactic can be found in the [ResearchKit Documentation](http://researchkit.github.io/docs/docs/Survey/CreatingSurveys.html)
