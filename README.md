@@ -4,7 +4,7 @@
 Most Rave fields can be represented by an `ORKQuestionStep`. Special fields such as consent forms and form submission can be represented by
 other subclasses of `ORKStep` (`ORKVisualConsentStep`, `ORKCompletionStep`).
 
-If multiple questions should be shown on a single, scrollable page, an ORKFormStep can be used to encapsulate multiple ORKSteps
+If multiple questions should be shown on a single, scrollable page, an `ORKFormStep` can be used to encapsulate multiple `ORKSteps`
 
 Fields shared by all Rave Architect Fields:
 
