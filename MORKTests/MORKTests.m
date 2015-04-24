@@ -68,9 +68,37 @@
     XCTAssert([[result fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
+- (void)testCollectionResultReturnsFieldDataArray {
+    NSDate *now = [NSDate date];
+    
+    ORKChoiceQuestionResult *qResult = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
+    qResult.choiceAnswers = @[@"YES"];
+    qResult.endDate = now;
+    
+    ORKScaleQuestionResult *sResult = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
+    sResult.scaleAnswer = @10;
+    qResult.endDate = now;
+    
+    ORKStepResult *stepResult = [[ORKStepResult alloc] initWithStepIdentifier:@"steps" results:@[qResult, sResult]];
+    
+    NSArray *expectedArray = @[
+                               @{
+                                   @"data_value" : @"YES",
+                                   @"item_oid" : @"choice",
+                                   @"date_time_entered" : [now description]
+                                   },
+                               @{
+                                   @"data_value" : @"10",
+                                   @"item_oid" : @"scale",
+                                   @"date_time_entered" : [now description]
+                                   }
+                               ];
+    
+    XCTAssert([[stepResult fieldDataFromResults] isEqualToArray:expectedArray]);
+}
+
 - (void)testExample {
     // This is an example of a functional test case.
-    [ORKCollectionResult doSomething];
     XCTAssert(YES, @"Pass");
 }
 
