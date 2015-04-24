@@ -28,6 +28,46 @@
     [super tearDown];
 }
 
+- (void)testDateTimeQuestionResultReturnsCorrectRawResult {
+    ORKDateQuestionResult *result = [[ORKDateQuestionResult alloc] init];
+    
+    NSDate *today = [NSDate date];
+    result.dateAnswer = today;
+    
+    XCTAssert([[result rawResult] isEqualToString: [today description]]);
+}
+
+- (void)testScaleQuestionResultReturnsCorrectRawResult {
+    ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] init];
+    result.scaleAnswer = @10;
+    
+    XCTAssert([[result rawResult] isEqualToString:@"10"]);
+}
+
+- (void)testChoiceQuestionResultReturnsCorrectRawResult {
+    ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] init];
+    result.choiceAnswers = @[@"YES"];
+    
+    XCTAssert([[result rawResult] isEqualToString:@"YES"]);
+    
+}
+
+- (void)testFieldDataReturnsProperDictionary {
+    ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
+    NSDate *now = [NSDate date];
+    
+    result.scaleAnswer = @10;
+    result.endDate = now;
+    
+    NSDictionary *expectedDictionary = @{
+                                         @"data_value" : @"10",
+                                         @"item_oid" : @"scale",
+                                         @"date_time_entered" : [now description]
+                                         };
+    
+    XCTAssert([[result fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
+}
+
 - (void)testExample {
     // This is an example of a functional test case.
     [ORKCollectionResult doSomething];

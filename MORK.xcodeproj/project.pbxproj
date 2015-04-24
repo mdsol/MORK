@@ -13,6 +13,9 @@
 		527103DB1AE9ABBA00889C98 /* ORKCollectionResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 527103D81AE9A97500889C98 /* ORKCollectionResult+MORK.m */; };
 		5292A2A51AE93A0800D24393 /* MORK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5292A2A41AE93A0800D24393 /* MORK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5292A2B21AE93A0800D24393 /* MORKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5292A2B11AE93A0800D24393 /* MORKTests.m */; };
+		52C1BD961AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C1BD941AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h */; };
+		52C1BD971AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */; };
+		52C1BD981AEA85900011A1B9 /* ORKQuestionResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */; };
 		52EDDD751AE995CF003B0B17 /* MORK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 52EDDD741AE995CF003B0B17 /* MORK.podspec */; };
 		52EDDD781AE99920003B0B17 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 52EDDD771AE99920003B0B17 /* Podfile */; };
 		EF04460B7DFDB2EA95ECEDAA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1337F25099424D7699175AE5 /* libPods.a */; };
@@ -39,6 +42,8 @@
 		5292A2AA1AE93A0800D24393 /* MORKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MORKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292A2B01AE93A0800D24393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5292A2B11AE93A0800D24393 /* MORKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MORKTests.m; sourceTree = "<group>"; };
+		52C1BD941AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ORKQuestionResult+MORK.h"; sourceTree = "<group>"; };
+		52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ORKQuestionResult+MORK.m"; sourceTree = "<group>"; };
 		52EDDD741AE995CF003B0B17 /* MORK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MORK.podspec; sourceTree = "<group>"; };
 		52EDDD771AE99920003B0B17 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		646A9F3CF799CE9588C7F1D9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +141,8 @@
 			children = (
 				527103D71AE9A97500889C98 /* ORKCollectionResult+MORK.h */,
 				527103D81AE9A97500889C98 /* ORKCollectionResult+MORK.m */,
+				52C1BD941AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h */,
+				52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 			files = (
 				5292A2A51AE93A0800D24393 /* MORK.h in Headers */,
 				527103D91AE9A97500889C98 /* ORKCollectionResult+MORK.h in Headers */,
+				52C1BD961AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52C1BD971AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m in Sources */,
 				527103DA1AE9A97500889C98 /* ORKCollectionResult+MORK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52C1BD981AEA85900011A1B9 /* ORKQuestionResult+MORK.m in Sources */,
 				527103DB1AE9ABBA00889C98 /* ORKCollectionResult+MORK.m in Sources */,
 				5292A2B21AE93A0800D24393 /* MORKTests.m in Sources */,
 			);
