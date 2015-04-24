@@ -22,12 +22,15 @@
     
     if([self isKindOfClass:[ORKChoiceQuestionResult class]]) {
         ORKChoiceQuestionResult *cqResult = (ORKChoiceQuestionResult *) self;
-        resultString = [cqResult.choiceAnswers.firstObject description];
+        resultString = [NSString stringWithFormat:@"%@", cqResult.choiceAnswers.firstObject];
     }
     
     if([self isKindOfClass:[ORKDateQuestionResult class]]) {
         ORKDateQuestionResult *dResult = (ORKDateQuestionResult *) self;
-        resultString = [dResult.dateAnswer description];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+        resultString = [formatter stringFromDate:dResult.dateAnswer];
     }
     
     if([self isKindOfClass:[ORKScaleQuestionResult class]]) {

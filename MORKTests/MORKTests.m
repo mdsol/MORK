@@ -34,7 +34,11 @@
     NSDate *today = [NSDate date];
     result.dateAnswer = today;
     
-    XCTAssert([[result rawResult] isEqualToString: [today description]]);
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSString* expectedString = [formatter stringFromDate:today];
+    
+    XCTAssert([[result rawResult] isEqualToString: expectedString]);
 }
 
 - (void)testScaleQuestionResultReturnsCorrectRawResult {
