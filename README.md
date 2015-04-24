@@ -10,7 +10,7 @@ Fields shared by all Rave Architect Fields:
 
 | Rave Architect Field | ResearchKit Field                                    |
 | -------------------  | ----------------                                     |
-| FieldOID             | NSString Identifier                                  |
+| FieldOID             | `ORKStep.identifer`                                  |
 | Header Text          | `ORKStep.title`                                      |
 | Field Label (?)      | `ORKStep.text`                                       |
 | VariableFormat       | See [Formatting](#formatting-and-validation) Section |
@@ -24,9 +24,7 @@ Fields without corresponding ResearchKit Controls may not be supported out-of-th
 | Rave Control        | ResearchKit Control                                                                                                                                                                                                                                                                                       |
 | --------------      | ---------                                                                                                                                                                                                                                                                                                 |
 | Text                | [ORKTextAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextAnswerFormat.html), [ORKNumericAnswerFormat](http://researchkit.github.io/docs/Classes/ORKNumericAnswerFormat.html)                                                                                                                |
-| Long Text           | [ORKTextAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextAnswerFormat.html)                                                                                                                                                                                                                 |
 | Date Time           | [ORKDateAnswerFormat](http://researchkit.github.io/docs/Classes/ORKDateAnswerFormat.html), [ORKTimeIntervalAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTimeIntervalAnswerFormat.html), [ORKTimeOfDayAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTimeOfDayAnswerFormat.html) |
-| Check Box           | [ORKTextChoiceAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextChoiceAnswerFormat.html)                                                                                                                                                                                                     |
 | Drop Down List      | [ORKTextChoiceAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextChoiceAnswerFormat.html)                                                                                                                                                                                                     |
 | Radio Button        | [ORKTextChoiceAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextChoiceAnswerFormat.html)                                                                                                                                                                                                     |
 | Signature           | [ORKConsentReviewStep](http://researchkit.github.io/docs/Classes/ORKConsentReviewStep.html) + [ORKConsentSignature](http://researchkit.github.io/docs/Classes/ORKConsentSignature.html)                                                                                                                   |
@@ -66,13 +64,13 @@ While technically the DateTime control could be represented by an ORKTextAnswerF
 ### Check Box
 RK Control: ORKTextChoiceAnswerFormat
 
-Specifying the `ORKChoiceAnswerStyleMultipleChoice` when creating a question with ORKTextChoiceAnswerFormat will allow the user to select multiple choices.
+Specifying the `ORKChoiceAnswerStyleMultipleChoice` when creating a question with `ORKTextChoiceAnswerFormat` will allow the user to select multiple choices.
 
-| Rave Architect Field | ResearchKit Field        |
-| -------------------  | ------------------------ |
-| Data Dictionary      | NSArray of ORKTextChoice |
-| User Data String     | `ORKTextChoice.text`     |
-| Coded Data           | `ORKTextChoice.value`    |
+| Rave Architect Field | ResearchKit Field            |
+| -------------------  | ------------------------     |
+| Data Dictionary      | `NSArray` of `ORKTextChoice` |
+| User Data String     | `ORKTextChoice.text`         |
+| Coded Data           | `ORKTextChoice.value`        |
 
 
 ### Drop Down List / Radio Button
@@ -83,11 +81,11 @@ RK Control: ORKTextChoiceAnswerFormat or ORKValuePickerAnswerFormat
 An ORKTextChoiceAnswerFormat will list all options at once, whereas a ORKValuePickerAnswerFormat provides
 a scrollable list that shows only a view items at once.
 
-| Rave Architect Field | ResearchKit Field        |
-| -------------------  | ------------------------ |
-| Data Dictionary      | NSArray of ORKTextChoice |
-| User Data String     | `ORKTextChoice.text`     |
-| Coded Data           | `ORKTextChoice.value`    |
+| Rave Architect Field | ResearchKit Field            |
+| -------------------  | ------------------------     |
+| Data Dictionary      | `NSArray` of `ORKTextChoice` |
+| User Data String     | `ORKTextChoice.text`         |
+| Coded Data           | `ORKTextChoice.value`        |
 
 
 ### Signature
@@ -112,11 +110,10 @@ Basic Rave Formatting and Validation can be implemented in ResearchKit using the
 | $x              | `ORKTextAnswerFormat.maximumLength = x`                                                                                   |
 | n               | `ORKNumericAnswerFormat.maximum = pow(10, n) - 1`                                                                         |
 | n+              | `ORKNumericAnswerFormat.minimum = pow(10, n-1)` `ORKNumericAnswerFormat.maximum = pow(10,n) - 1`                          |
-| n.n, n.x, etc.. | Decimals are allow via the `style`, but the options are not fine-grained                                                  |
 | Date Formats    | Using specific controls + `style` options allows for selection of just date, date + time, time of day, and time intervals |
 | nn              | `ORKNumericAnswerFormat.minimum = 1` `ORKNumericAnswerFormat.maximum = 59`                                                |
 | ss              | `ORKNumericAnswerFormat.minimum = 1` `ORKNumericAnswerFormat.maximum = 59`                                                |
 | rr              | Can use an ORKValuePickerAnswerFormat to restrict to AM, PM                                                               |
 
-For more advanced validations, the [ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html) can be implemented. This delegate provides methods for finer-grained control over individual steps.
+For more advanced validations, the `[ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html)` can be implemented. This delegate provides methods for finer-grained control over individual steps.
 
