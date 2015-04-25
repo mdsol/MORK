@@ -18,6 +18,7 @@
             ORKQuestionResult *result = (ORKQuestionResult *) obj;
             [data addObject:[result fieldDataDictionary]];
         } else if([obj isKindOfClass:[ORKStepResult class]]) {
+            // Extract data from nested ORKCollectionResult
             ORKStepResult *stepResult = (ORKStepResult *) obj;
             [data addObjectsFromArray:[stepResult fieldDataFromResults]];
         }

@@ -109,6 +109,37 @@
 
 - (void)testNestedTaskResultsReturnsFieldDataArray {
     NSDate *now = [NSDate date];
+    
+    ORKChoiceQuestionResult *qResult = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
+    qResult.choiceAnswers = @[@"YES"];
+    qResult.endDate = now;
+    
+    ORKScaleQuestionResult *sResult = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
+    sResult.scaleAnswer = @10;
+    qResult.endDate = now;
+    
+    ORKStepResult *stepResult = [[ORKStepResult alloc] initWithStepIdentifier:@"steps" results:@[qResult, sResult]];
+
+    ORKTaskResult *taskResult = [[ORKTaskResult alloc] initWithIdentifier:@"task"];
+    taskResult.results = @[stepResult];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
+    NSArray *expectedArray = @[
+                               @{
+                                   @"data_value" : @"YES",
+                                   @"item_oid" : @"choice",
+                                   @"date_time_entered" : [formatter stringFromDate:now]
+                                   },
+                               @{
+                                   @"data_value" : @"10",
+                                   @"item_oid" : @"scale",
+                                   @"date_time_entered" : [formatter stringFromDate:now]
+                                   }
+                               ];
+    
+    XCTAssert([[taskResult fieldDataFromResults] isEqualToArray:expectedArray]);
 }
 
 @end
