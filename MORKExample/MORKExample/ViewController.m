@@ -12,7 +12,6 @@
 #import <MORK/ORKCollectionResult+MORK.h>
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
@@ -20,44 +19,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    ORKOrderedTask *task  = [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:[self createSteps]];
+    self.taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
+    
+    self.taskViewController.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSMutableArray *steps = [self createSteps];
-    ORKOrderedTask *task  = [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:steps];
-    ORKTaskViewController *taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
-    
-    taskViewController.delegate = self;
-    [self presentViewController:taskViewController animated:YES completion:nil];
+    [super viewDidAppear:animated];
+    [self presentViewController:self.taskViewController animated:YES completion:nil];
 }
 
 
 - (void)taskViewController:(ORKTaskViewController *)taskViewController
        didFinishWithReason:(ORKTaskViewControllerFinishReason)reason
                      error:(NSError *)error {
-
-    //ORKScaleQuestionResult *sResult = (ORKScaleQuestionResult *)[taskViewController.result resultForIdentifier:@"PAIN_LEVEL"];
     
-    //[sResult fieldDataDictionary];
-    
-    ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
-    NSDate *now = [NSDate date];
-    
-    result.scaleAnswer = @10;
-    result.endDate = now;
-    NSLog(@"%@", [result fieldDataDictionary]);
     
     ORKTaskResult *taskResult = taskViewController.result;
-    NSLog(@"the resulting dictionary:");
     
-    NSLog(@"%@", [taskResult fieldDataFromResults]);
-
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Form Completed"
+                                                    message:@"Thank you for completing the form!"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
     
-    
-    
-    //ORKTaskResult *result = taskViewController.result;
-    //NSLog(@"data: %@", [result fieldDataFromResults]);
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [alert show];
 }
 
 
