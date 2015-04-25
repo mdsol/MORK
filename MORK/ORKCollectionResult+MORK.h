@@ -9,7 +9,5 @@
 #import "ORKResult.h"
 
 @interface ORKCollectionResult (MORK)
-+ (void) doSomethingElse;
-- (void) doSomething;
 - (NSArray *) fieldDataFromResults;
 @end

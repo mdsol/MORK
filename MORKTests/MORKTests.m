@@ -63,10 +63,13 @@
     result.scaleAnswer = @10;
     result.endDate = now;
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
     NSDictionary *expectedDictionary = @{
                                          @"data_value" : @"10",
                                          @"item_oid" : @"scale",
-                                         @"date_time_entered" : [now description]
+                                         @"date_time_entered" : [formatter stringFromDate:now]
                                          };
     
     XCTAssert([[result fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
@@ -85,20 +88,27 @@
     
     ORKStepResult *stepResult = [[ORKStepResult alloc] initWithStepIdentifier:@"steps" results:@[qResult, sResult]];
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
     NSArray *expectedArray = @[
                                @{
                                    @"data_value" : @"YES",
                                    @"item_oid" : @"choice",
-                                   @"date_time_entered" : [now description]
+                                   @"date_time_entered" : [formatter stringFromDate:now]
                                    },
                                @{
                                    @"data_value" : @"10",
                                    @"item_oid" : @"scale",
-                                   @"date_time_entered" : [now description]
+                                   @"date_time_entered" : [formatter stringFromDate:now]
                                    }
                                ];
     
     XCTAssert([[stepResult fieldDataFromResults] isEqualToArray:expectedArray]);
+}
+
+- (void)testNestedTaskResultsReturnsFieldDataArray {
+    NSDate *now = [NSDate date];
 }
 
 @end

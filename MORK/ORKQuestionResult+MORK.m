@@ -13,7 +13,7 @@
     return @{
              @"data_value" : [self rawResult],
              @"item_oid" : self.identifier,
-             @"date_time_entered" : [self.endDate description]
+             @"date_time_entered" : [[self dateFormatter] stringFromDate:self.endDate]
              };
 }
 
@@ -27,10 +27,7 @@
     
     if([self isKindOfClass:[ORKDateQuestionResult class]]) {
         ORKDateQuestionResult *dResult = (ORKDateQuestionResult *) self;
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-        resultString = [formatter stringFromDate:dResult.dateAnswer];
+        resultString = [[self dateFormatter] stringFromDate:dResult.dateAnswer];
     }
     
     if([self isKindOfClass:[ORKScaleQuestionResult class]]) {
@@ -38,5 +35,11 @@
         resultString = [NSString stringWithFormat:@"%@", [sqResult scaleAnswer]];
     }
     return resultString;
+}
+
+- (NSDateFormatter *) dateFormatter {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    return formatter;
 }
 @end
