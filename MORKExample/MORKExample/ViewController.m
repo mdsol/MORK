@@ -58,7 +58,11 @@
         [steps addObject:step];
     }
     
-    
+    /*
+     Corresponding control types:
+        Rave Architect: Drop Down List, Radio Button
+        Patient Cloud: Patient Cloud: Dictionary
+     */
     {
         NSArray *choices = @[[ORKTextChoice choiceWithText:@"Male" detailText:nil value:@"M"],
                              [ORKTextChoice choiceWithText:@"Female" detailText:nil value:@"F"]];
@@ -67,14 +71,22 @@
         [steps addObject:step];
     }
     
-    
+    /*
+     Corresponding control types: 
+        Rave Architect: Date Time
+        Patient Cloud: Date Time
+     */
     {
         ORKDateAnswerFormat *dateFormat = [ORKDateAnswerFormat dateAnswerFormat];
         ORKQuestionStep *step = [ORKQuestionStep questionStepWithIdentifier: @"DOB" title: @"When were you born?" answer: dateFormat];
         [steps addObject:step];
     }
     
-    
+    /*
+     Corresponding control types: 
+        Rave Architect: Drop Down List, Radio Button
+        Patient Cloud: Dictionary
+     */
     {
         NSArray *choices = @[[ORKTextChoice choiceWithText:@"Never" detailText:nil value:@"Never"],
                              [ORKTextChoice choiceWithText:@"Rarely" detailText:nil value:@"Rarely"],
@@ -85,7 +97,11 @@
         [steps addObject:step];
     }
     
-    
+    /*
+     Corresponding control types:
+        Rave Architect: Text
+        Patient Cloud: VAS, NRS
+     */
     {
         ORKScaleAnswerFormat *scaleFormat = [[ORKScaleAnswerFormat alloc] initWithMaximumValue:10 minimumValue:1 step:1 defaultValue:5];
         ORKQuestionStep *step = [ORKQuestionStep questionStepWithIdentifier:@"PAIN_LEVEL" title:@"How much pain do you feel in your arm?" answer:scaleFormat];
