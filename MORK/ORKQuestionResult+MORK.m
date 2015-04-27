@@ -8,9 +8,6 @@
 
 #import "ORKQuestionResult+MORK.h"
 
-#define ORKDynamicCast(x, c) ((c *) ([x isKindOfClass:[c class]] ? x : nil))
-
-
 @implementation ORKQuestionResult (MORK)
 - (NSDictionary *)mork_fieldDataDictionary {
     return @{
