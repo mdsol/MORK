@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ResearchKit/ResearchKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <ORKTaskViewControllerDelegate>
 @property (strong, nonatomic) ORKTaskViewController *taskViewController;
 @end
 
