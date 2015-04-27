@@ -19,7 +19,7 @@ Fields shared by all Rave Architect Fields:
 
 ## Control Types
 
-Fields without corresponding ResearchKit Controls may not be supported out-of-the-box
+Many Patient Cloud Fields can be supported through configuration of existing ResearchKit Objects. For some Fields additional customization would be required (e.g. subclassing ORKQuestion).
 
 | Rave Control        | ResearchKit Control                                                                                                                                                                                                                                                                                       |
 | --------------      | ---------                                                                                                                                                                                                                                                                                                 |
@@ -28,9 +28,6 @@ Fields without corresponding ResearchKit Controls may not be supported out-of-th
 | Drop Down List      | [ORKTextChoiceAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextChoiceAnswerFormat.html)                                                                                                                                                                                                     |
 | Radio Button        | [ORKTextChoiceAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextChoiceAnswerFormat.html)                                                                                                                                                                                                     |
 | Signature           | [ORKConsentReviewStep](http://researchkit.github.io/docs/Classes/ORKConsentReviewStep.html) + [ORKConsentSignature](http://researchkit.github.io/docs/Classes/ORKConsentSignature.html)                                                                                                                   |
-| Search List         |                                                                                                                                                                                                                                                                                                           |
-| Dynamic Search List |                                                                                                                                                                                                                                                                                                           |
-| File Upload         |                                                                                                                                                                                                                                                                                                           |
 
 Many Patient Cloud controls also have ResearchKit equivalents:
 
@@ -41,7 +38,7 @@ Many Patient Cloud controls also have ResearchKit equivalents:
 | Acknowledgement       | [ORKConsentReviewStep](http://researchkit.github.io/docs/Classes/ORKConsentReviewStep.html) + [ORKConsentSignature](http://researchkit.github.io/docs/Classes/ORKConsentSignature.html) |
 | NoCloudDisplay        | N/A                                                                                                                                                                                     |
 | Wong Baker            | [ORKImageChoiceAnswerFormat](https://researchkit.github.io/docs/Classes/ORKImageChoiceAnswerFormat.html)                                                                                |
-| Bristol               | ORKImageChoiceAnswerFormat can be subclassed to add support for vertical images                                                                                                         |
+| Bristol               | [ORKImageChoiceAnswerFormat](https://researchkit.github.io/docs/Classes/ORKImageChoiceAnswerFormat.html) can be subclassed to add support for vertical images                           |
 | VAS / VAS with Box    | [ORKScaleAnswerFormat](https://researchkit.github.io/docs/Classes/ORKScaleAnswerFormat.html)                                                                                            |
 | NRS                   | [ORKScaleAnswerFormat](https://researchkit.github.io/docs/Classes/ORKScaleAnswerFormat.html)                                                                                            |
 
@@ -50,19 +47,19 @@ Many Patient Cloud controls also have ResearchKit equivalents:
 ## Specific Control Types
 
 ### Text & Long Text
-RK Control: `ORKTextAnswerFormat` or `ORKNumericAnswerFormat`
+ResearchKit Object: `ORKTextAnswerFormat` or `ORKNumericAnswerFormat`
 
 Depending on the nature of the data, either text or a numeric value can be captured.
 
 
 ### Date / Time
-RK Control: `ORKDateAnswerFormat` or `ORKTimeIntervalAnswerFormat` or `ORKTimeOfDayAnswerFormat`
+ResearchKit Object: `ORKDateAnswerFormat` or `ORKTimeIntervalAnswerFormat` or `ORKTimeOfDayAnswerFormat`
 
 While technically the DateTime control could be represented by an `ORKTextAnswerFormat` control, using an `ORKDateAnswerFormat` will avoid the need to implement complicated Date validations.
 
 
 ### Check Box
-RK Control: `ORKTextChoiceAnswerFormat`
+ResearchKit Object: `ORKTextChoiceAnswerFormat`
 
 Specifying the `ORKChoiceAnswerStyleMultipleChoice` when creating a question with `ORKTextChoiceAnswerFormat` will allow the user to select multiple choices.
 
@@ -76,7 +73,7 @@ Specifying the `ORKChoiceAnswerStyleMultipleChoice` when creating a question wit
 ### Drop Down List / Radio Button
 Used to produce a sequence of Radio Buttons or a Drop Down
 
-RK Control: `ORKTextChoiceAnswerFormat` or `ORKValuePickerAnswerFormat`
+ResearchKit Object: `ORKTextChoiceAnswerFormat` or `ORKValuePickerAnswerFormat`
 
 An `ORKTextChoiceAnswerFormat` will list all options at once, whereas a `ORKValuePickerAnswerFormat` provides
 a scrollable list that shows only a view items at once.
@@ -89,19 +86,28 @@ a scrollable list that shows only a view items at once.
 
 
 ### Signature
-RK Control: `ORKConsentReviewStep` + `ORKConsentSignature`
+ResearchKit Object: `ORKConsentReviewStep` + `ORKConsentSignature`
 
 The `ORKConsentReviewStep` can be used to ask a subject for their consent and can produce an `ORKConstentSignature` instance containing the relevant data.
 
 
 ## Active Tasks
 
-ResearchKit provides [active tasks](https://researchkit.github.io/docs/docs/ActiveTasks/ActiveTasks.html) for collecting data under "partial controlled conditions." Such tasks may include walking for a period of time, tapping the screen repeatedly, or completing a task to test memory.
+ResearchKit provides [Active Tasks](https://researchkit.github.io/docs/docs/ActiveTasks/ActiveTasks.html) for collecting data under "partial controlled conditions." Such tasks may include walking for a period of time, tapping the screen repeatedly, or completing a task to test memory.
 
-Active tasks return an `ORKResult` object containing numerical data which can be converted into whatever form is needed by your application.
+Active Tasks return a hierarchy of `ORKResult` objects containing the collected data. If the data is too large, it will be saved to a file and an `ORKFileResult` object will be returned. Additionally, a `ORKRecorderConfiguration` can be attached to an Active Step to process data while it is being collected.
 
 ## Formatting and Validation
-Each Answer Format provides basic validation. Numeric options provide minumum and maximum constraints. Text fields allow for minimum and maximum lengths. Date fields allow for minimum and maximum dates.
+
+The following Answer Formats provide basic input validation:
+
+| ResearchKit Object               | Validation properties                         |
+| ------------------               | ---------------------                         |
+| `ORKNumericAnserFormat`          | `minimum`, `maximum`                          |
+| `ORKScaleAnswerFormat`           | `minimum`, `maximum`, `step`                  |
+| `ORKContinuousScaleAnswerFormat` | `minimum`, `maximum`, `maximumFractionDigits` |
+| `ORKTextAnswerFormat`            | `maximumLength`, `multipleLines`              |
+| `ORKDateAnswerFormat`            | `minimumDate`, `maximumDate`                  |
 
 Basic Rave Formatting and Validation can be implemented in ResearchKit using the following:
 
@@ -119,4 +125,4 @@ For more advanced validations, the `[ORKStepViewControllerDelegate](https://rese
 
 
 ## Branching Questions / Edit Checks
-To show conditional steps based on user input, `ORKOrderedTask` can be subclassed and the `stepAfterStep` and `stepBeforeStep` methods overwritten. An example of this tactic can be found in the [ResearchKit Documentation](http://researchkit.github.io/docs/docs/Survey/CreatingSurveys.html)
+While Edit Check execution is not yet supported, dynamic Field visibility based on results can be accomplished by subclassing `ORKOrderedTask`, overriding the `stepAfterStep` and `stepBeforeStep` methods. An example can be found in the [ResearchKit Documentation](http://researchkit.github.io/docs/docs/Survey/CreatingSurveys.html).
