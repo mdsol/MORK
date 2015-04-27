@@ -48,7 +48,7 @@
 
     dispatch_once(&onceToken, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy hh:mm:ss"];
     });
 
     return dateFormatter;
