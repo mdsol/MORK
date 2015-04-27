@@ -9,15 +9,15 @@
 #import "ORKQuestionResult+MORK.h"
 
 @implementation ORKQuestionResult (MORK)
-- (NSDictionary *)fieldDataDictionary {
+- (NSDictionary *)mork_fieldDataDictionary {
     return @{
-             @"data_value" : [self rawResult],
+             @"data_value" : [self mork_rawResult],
              @"item_oid" : self.identifier,
-             @"date_time_entered" : [self.endDate description]
+             @"date_time_entered" : [[self mork_dateFormatter] stringFromDate:self.endDate]
              };
 }
 
-- (NSString *)rawResult {
+- (NSString *)mork_rawResult {
     NSString *resultString;
     
     if([self isKindOfClass:[ORKChoiceQuestionResult class]]) {
@@ -27,10 +27,7 @@
     
     if([self isKindOfClass:[ORKDateQuestionResult class]]) {
         ORKDateQuestionResult *dResult = (ORKDateQuestionResult *) self;
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-        resultString = [formatter stringFromDate:dResult.dateAnswer];
+        resultString = [[self mork_dateFormatter] stringFromDate:dResult.dateAnswer];
     }
     
     if([self isKindOfClass:[ORKScaleQuestionResult class]]) {
@@ -38,5 +35,11 @@
         resultString = [NSString stringWithFormat:@"%@", [sqResult scaleAnswer]];
     }
     return resultString;
+}
+
+- (NSDateFormatter *) mork_dateFormatter {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    return formatter;
 }
 @end

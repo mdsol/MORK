@@ -9,6 +9,6 @@
 #import "ORKResult.h"
 
 @interface ORKQuestionResult (MORK)
-- (NSString *) rawResult;
-- (NSDictionary *) fieldDataDictionary;
+@property (readonly) NSString *mork_rawResult;
+@property (readonly) NSDictionary *mork_fieldDataDictionary;
 @end

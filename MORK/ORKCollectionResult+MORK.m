@@ -10,20 +10,17 @@
 #import "ORKQuestionResult+MORK.h"
 
 @implementation ORKCollectionResult (MORK)
-+(void) doSomethingElse {
-    NSLog(@"doing something else");
-}
 
--(void) doSomething {
-    NSLog(@"log something");
-}
-
--(NSArray *) fieldDataFromResults {
-    NSMutableArray *data = [NSMutableArray arrayWithArray: @[]];
+-(NSArray *) mork_fieldDataFromResults {
+    NSMutableArray *data = [NSMutableArray array];
     [self.results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if([obj isKindOfClass:[ORKQuestionResult class]]) {
             ORKQuestionResult *result = (ORKQuestionResult *) obj;
-            [data addObject:[result fieldDataDictionary]];
+            [data addObject:[result mork_fieldDataDictionary]];
+        } else if([obj isKindOfClass:[ORKStepResult class]]) {
+            // Extract data from nested ORKCollectionResult
+            ORKStepResult *stepResult = (ORKStepResult *) obj;
+            [data addObjectsFromArray:[stepResult mork_fieldDataFromResults]];
         }
     }];
     return [data copy];
