@@ -25,7 +25,7 @@ NSString *todayString;
 - (void)setUp {
     [super setUp];
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy hh:mm:ss"];
     today = [NSDate date];
     todayString = [dateFormatter stringFromDate:today];
 }
@@ -35,12 +35,11 @@ NSString *todayString;
     [super tearDown];
 }
 
-
 - (void)testChoiceQuestionResultReturnsProperDictionary {
     ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     result.choiceAnswers = @[@"YES"];
     result.endDate = today;
-    
+
     NSDictionary *expectedDictionary = @{
                                          @"data_value" : @"YES",
                                          @"item_oid" : @"choice",
@@ -49,7 +48,6 @@ NSString *todayString;
     
     XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
-
 
 - (void)testDateTimeQuestionResultReturnsProperDictionary {
     ORKDateQuestionResult *result = [[ORKDateQuestionResult alloc] initWithIdentifier:@"date"];
