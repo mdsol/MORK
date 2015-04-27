@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ResearchKit/ResearchKit.h>
+#import "ORKCollectionResult+MORK.h"
+#import "ORKQuestionResult+MORK.h"
 
 //! Project version number for MORK.
 FOUNDATION_EXPORT double MORKVersionNumber;
