@@ -103,7 +103,7 @@ Basic Rave Formatting and Validation can be implemented in ResearchKit using the
 | n               | `ORKNumericAnswerFormat.maximum = pow(10, n) - 1`                                                                         |
 | n+              | `ORKNumericAnswerFormat.minimum = pow(10, n-1)` `ORKNumericAnswerFormat.maximum = pow(10,n) - 1`                          |
 
-For more advanced validations, the [ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html) can be implemented. This delegate provides methods for finer-grained control over individual steps.
+For more advanced validations, the `didFinishWithNavigationDirection` and `stepViewControllerResultDidChange` methods from the [ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html) may be implemented for finer-grained control over step navigation. Additionally the `shouldPresentStep` method from the [ORKTaskViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKTaskViewControllerDelegate.html) may also be suitable for disallowing navigation after the user submits invalid data.
 
 
 ## Branching Questions / Edit Checks
