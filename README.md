@@ -19,7 +19,7 @@ Fields shared by all Rave Architect Fields:
 
 ## Control Types
 
-Many Patient Cloud Fields can be supported through configuration of existing ResearchKit Objects. For some Fields additional customization would be required (e.g. subclassing ORKQuestion).
+Many Rave and Patient Cloud Fields can be supported through configuration of existing ResearchKit Objects. For some Fields additional customization would be required (e.g. subclassing ORKQuestion).
 
 | Rave Control        | ResearchKit Control                                                                                                                                                                                                                                                                                       |
 | --------------      | ---------                                                                                                                                                                                                                                                                                                 |
@@ -28,8 +28,6 @@ Many Patient Cloud Fields can be supported through configuration of existing Res
 | Drop Down List      | [ORKTextChoiceAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextChoiceAnswerFormat.html)                                                                                                                                                                                                     |
 | Radio Button        | [ORKTextChoiceAnswerFormat](http://researchkit.github.io/docs/Classes/ORKTextChoiceAnswerFormat.html)                                                                                                                                                                                                     |
 | Signature           | [ORKConsentReviewStep](http://researchkit.github.io/docs/Classes/ORKConsentReviewStep.html) + [ORKConsentSignature](http://researchkit.github.io/docs/Classes/ORKConsentSignature.html)                                                                                                                   |
-
-Many Patient Cloud controls also have ResearchKit equivalents:
 
 | Patient Cloud Control | ResearchKit Control                                                                                                                                                                     |
 | --------------        | ---------                                                                                                                                                                               |
