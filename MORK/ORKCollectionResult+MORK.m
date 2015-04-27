@@ -12,7 +12,7 @@
 @implementation ORKCollectionResult (MORK)
 
 -(NSArray *) fieldDataFromResults {
-    NSMutableArray *data = [NSMutableArray arrayWithArray: @[]];
+    NSMutableArray *data = [NSMutableArray array];
     [self.results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if([obj isKindOfClass:[ORKQuestionResult class]]) {
             ORKQuestionResult *result = (ORKQuestionResult *) obj;
