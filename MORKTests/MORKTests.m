@@ -19,46 +19,54 @@
 
 NSDateFormatter *dateFormatter;
 NSDate *today;
+NSString *todayString;
+
 
 - (void)setUp {
     [super setUp];
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     today = [NSDate date];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    todayString = [dateFormatter stringFromDate:today];
 }
 
+
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testDateTimeQuestionResultReturnsCorrectRawResult {
-    ORKDateQuestionResult *result = [[ORKDateQuestionResult alloc] init];
-    
-    result.dateAnswer = today;
-    
-    NSString* expectedString = [dateFormatter stringFromDate:today];
-    
-    XCTAssert([[result mork_rawResult] isEqualToString: expectedString]);
-}
 
-- (void)testScaleQuestionResultReturnsCorrectRawResult {
-    ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] init];
-    result.scaleAnswer = @10;
-    
-    XCTAssert([[result mork_rawResult] isEqualToString:@"10"]);
-}
-
-- (void)testChoiceQuestionResultReturnsCorrectRawResult {
-    ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] init];
+- (void)testChoiceQuestionResultReturnsProperDictionary {
+    ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     result.choiceAnswers = @[@"YES"];
+    result.endDate = today;
     
-    XCTAssert([[result mork_rawResult] isEqualToString:@"YES"]);
+    NSDictionary *expectedDictionary = @{
+                                         @"data_value" : @"YES",
+                                         @"item_oid" : @"choice",
+                                         @"date_time_entered" : todayString
+                                         };
     
+    XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
-- (void)testFieldDataReturnsProperDictionary {
+
+- (void)testDateTimeQuestionResultReturnsProperDictionary {
+    ORKDateQuestionResult *result = [[ORKDateQuestionResult alloc] initWithIdentifier:@"date"];
+    result.dateAnswer = today;
+    result.endDate = today;
+    
+    NSDictionary *expectedDictionary = @{
+                                         @"data_value" : todayString,
+                                         @"item_oid" : @"date",
+                                         @"date_time_entered" : todayString
+                                         };
+    
+    XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
+}
+
+
+- (void)testScaleQuestionResultReturnsProperDictionary {
     ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
     
     result.scaleAnswer = @10;
@@ -67,11 +75,12 @@ NSDate *today;
     NSDictionary *expectedDictionary = @{
                                          @"data_value" : @"10",
                                          @"item_oid" : @"scale",
-                                         @"date_time_entered" : [dateFormatter stringFromDate:today]
+                                         @"date_time_entered" : todayString
                                          };
     
     XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
+
 
 - (void)testCollectionResultReturnsFieldDataArray {
     ORKChoiceQuestionResult *qResult = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
@@ -88,17 +97,18 @@ NSDate *today;
                                @{
                                    @"data_value" : @"YES",
                                    @"item_oid" : @"choice",
-                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
+                                   @"date_time_entered" : todayString
                                    },
                                @{
                                    @"data_value" : @"10",
                                    @"item_oid" : @"scale",
-                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
+                                   @"date_time_entered" : todayString
                                    }
                                ];
     
     XCTAssert([[stepResult mork_fieldDataFromResults] isEqualToArray:expectedArray]);
 }
+
 
 - (void)testNestedTaskResultsReturnsFieldDataArray {
     
@@ -119,12 +129,12 @@ NSDate *today;
                                @{
                                    @"data_value" : @"YES",
                                    @"item_oid" : @"choice",
-                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
+                                   @"date_time_entered" : todayString
                                    },
                                @{
                                    @"data_value" : @"10",
                                    @"item_oid" : @"scale",
-                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
+                                   @"date_time_entered" : todayString
                                    }
                                ];
     
