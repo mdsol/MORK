@@ -17,9 +17,14 @@
 
 @implementation MORKTests
 
+NSDateFormatter *dateFormatter;
+NSDate *today;
+
 - (void)setUp {
     [super setUp];
-    
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    today = [NSDate date];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -31,12 +36,9 @@
 - (void)testDateTimeQuestionResultReturnsCorrectRawResult {
     ORKDateQuestionResult *result = [[ORKDateQuestionResult alloc] init];
     
-    NSDate *today = [NSDate date];
     result.dateAnswer = today;
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    NSString* expectedString = [formatter stringFromDate:today];
+    NSString* expectedString = [dateFormatter stringFromDate:today];
     
     XCTAssert([[result mork_rawResult] isEqualToString: expectedString]);
 }
@@ -58,49 +60,40 @@
 
 - (void)testFieldDataReturnsProperDictionary {
     ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
-    NSDate *now = [NSDate date];
     
     result.scaleAnswer = @10;
-    result.endDate = now;
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    result.endDate = today;
     
     NSDictionary *expectedDictionary = @{
                                          @"data_value" : @"10",
                                          @"item_oid" : @"scale",
-                                         @"date_time_entered" : [formatter stringFromDate:now]
+                                         @"date_time_entered" : [dateFormatter stringFromDate:today]
                                          };
     
     XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 - (void)testCollectionResultReturnsFieldDataArray {
-    NSDate *now = [NSDate date];
-    
     ORKChoiceQuestionResult *qResult = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     qResult.choiceAnswers = @[@"YES"];
-    qResult.endDate = now;
+    qResult.endDate = today;
     
     ORKScaleQuestionResult *sResult = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
     sResult.scaleAnswer = @10;
-    qResult.endDate = now;
+    qResult.endDate = today;
     
     ORKStepResult *stepResult = [[ORKStepResult alloc] initWithStepIdentifier:@"steps" results:@[qResult, sResult]];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     
     NSArray *expectedArray = @[
                                @{
                                    @"data_value" : @"YES",
                                    @"item_oid" : @"choice",
-                                   @"date_time_entered" : [formatter stringFromDate:now]
+                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
                                    },
                                @{
                                    @"data_value" : @"10",
                                    @"item_oid" : @"scale",
-                                   @"date_time_entered" : [formatter stringFromDate:now]
+                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
                                    }
                                ];
     
@@ -108,34 +101,30 @@
 }
 
 - (void)testNestedTaskResultsReturnsFieldDataArray {
-    NSDate *now = [NSDate date];
     
     ORKChoiceQuestionResult *qResult = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     qResult.choiceAnswers = @[@"YES"];
-    qResult.endDate = now;
+    qResult.endDate = today;
     
     ORKScaleQuestionResult *sResult = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
     sResult.scaleAnswer = @10;
-    qResult.endDate = now;
+    qResult.endDate = today;
     
     ORKStepResult *stepResult = [[ORKStepResult alloc] initWithStepIdentifier:@"steps" results:@[qResult, sResult]];
 
     ORKTaskResult *taskResult = [[ORKTaskResult alloc] initWithIdentifier:@"task"];
     taskResult.results = @[stepResult];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    
     NSArray *expectedArray = @[
                                @{
                                    @"data_value" : @"YES",
                                    @"item_oid" : @"choice",
-                                   @"date_time_entered" : [formatter stringFromDate:now]
+                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
                                    },
                                @{
                                    @"data_value" : @"10",
                                    @"item_oid" : @"scale",
-                                   @"date_time_entered" : [formatter stringFromDate:now]
+                                   @"date_time_entered" : [dateFormatter stringFromDate:today]
                                    }
                                ];
     
