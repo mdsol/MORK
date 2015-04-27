@@ -36,6 +36,7 @@
     });
 
     NSString * (^block)(ORKQuestionResult *) = [rawResultDictionary objectForKey:NSStringFromClass([self class])];
+    NSAssert(block != nil, @"The %@ class is not currently supported.", NSStringFromClass([self class]));
     return block(self);
 }
 

@@ -40,7 +40,7 @@ NSString *todayString;
     ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     result.choiceAnswers = @[@"YES"];
     result.endDate = today;
-    
+
     NSDictionary *expectedDictionary = @{
                                          @"data_value" : @"YES",
                                          @"item_oid" : @"choice",
