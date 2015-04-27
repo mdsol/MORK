@@ -9,15 +9,15 @@
 #import "ORKQuestionResult+MORK.h"
 
 @implementation ORKQuestionResult (MORK)
-- (NSDictionary *)fieldDataDictionary {
+- (NSDictionary *)mork_fieldDataDictionary {
     return @{
-             @"data_value" : [self rawResult],
+             @"data_value" : [self mork_rawResult],
              @"item_oid" : self.identifier,
-             @"date_time_entered" : [[self dateFormatter] stringFromDate:self.endDate]
+             @"date_time_entered" : [[self mork_dateFormatter] stringFromDate:self.endDate]
              };
 }
 
-- (NSString *)rawResult {
+- (NSString *)mork_rawResult {
     NSString *resultString;
     
     if([self isKindOfClass:[ORKChoiceQuestionResult class]]) {
@@ -27,7 +27,7 @@
     
     if([self isKindOfClass:[ORKDateQuestionResult class]]) {
         ORKDateQuestionResult *dResult = (ORKDateQuestionResult *) self;
-        resultString = [[self dateFormatter] stringFromDate:dResult.dateAnswer];
+        resultString = [[self mork_dateFormatter] stringFromDate:dResult.dateAnswer];
     }
     
     if([self isKindOfClass:[ORKScaleQuestionResult class]]) {
@@ -37,7 +37,7 @@
     return resultString;
 }
 
-- (NSDateFormatter *) dateFormatter {
+- (NSDateFormatter *) mork_dateFormatter {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     return formatter;

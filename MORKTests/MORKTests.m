@@ -38,21 +38,21 @@
     [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
     NSString* expectedString = [formatter stringFromDate:today];
     
-    XCTAssert([[result rawResult] isEqualToString: expectedString]);
+    XCTAssert([[result mork_rawResult] isEqualToString: expectedString]);
 }
 
 - (void)testScaleQuestionResultReturnsCorrectRawResult {
     ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] init];
     result.scaleAnswer = @10;
     
-    XCTAssert([[result rawResult] isEqualToString:@"10"]);
+    XCTAssert([[result mork_rawResult] isEqualToString:@"10"]);
 }
 
 - (void)testChoiceQuestionResultReturnsCorrectRawResult {
     ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] init];
     result.choiceAnswers = @[@"YES"];
     
-    XCTAssert([[result rawResult] isEqualToString:@"YES"]);
+    XCTAssert([[result mork_rawResult] isEqualToString:@"YES"]);
     
 }
 
@@ -72,7 +72,7 @@
                                          @"date_time_entered" : [formatter stringFromDate:now]
                                          };
     
-    XCTAssert([[result fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
+    XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 - (void)testCollectionResultReturnsFieldDataArray {
@@ -104,7 +104,7 @@
                                    }
                                ];
     
-    XCTAssert([[stepResult fieldDataFromResults] isEqualToArray:expectedArray]);
+    XCTAssert([[stepResult mork_fieldDataFromResults] isEqualToArray:expectedArray]);
 }
 
 - (void)testNestedTaskResultsReturnsFieldDataArray {
@@ -139,7 +139,7 @@
                                    }
                                ];
     
-    XCTAssert([[taskResult fieldDataFromResults] isEqualToArray:expectedArray]);
+    XCTAssert([[taskResult mork_fieldDataFromResults] isEqualToArray:expectedArray]);
 }
 
 @end
