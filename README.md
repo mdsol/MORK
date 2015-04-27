@@ -44,7 +44,7 @@ Many Rave and Patient Cloud Fields can be supported through configuration of exi
 
 ## Specific Control Types
 
-### Text & Long Text
+### Text
 ResearchKit Object: `ORKTextAnswerFormat` or `ORKNumericAnswerFormat`
 
 Depending on the nature of the data, either text or a numeric value can be captured.
@@ -54,18 +54,6 @@ Depending on the nature of the data, either text or a numeric value can be captu
 ResearchKit Object: `ORKDateAnswerFormat` or `ORKTimeIntervalAnswerFormat` or `ORKTimeOfDayAnswerFormat`
 
 While technically the DateTime control could be represented by an `ORKTextAnswerFormat` control, using an `ORKDateAnswerFormat` will avoid the need to implement complicated Date validations.
-
-
-### Check Box
-ResearchKit Object: `ORKTextChoiceAnswerFormat`
-
-Specifying the `ORKChoiceAnswerStyleMultipleChoice` when creating a question with `ORKTextChoiceAnswerFormat` will allow the user to select multiple choices.
-
-| Rave Architect Field | ResearchKit Field            |
-| -------------------  | ------------------------     |
-| Data Dictionary      | `NSArray` of `ORKTextChoice` |
-| User Data String     | `ORKTextChoice.text`         |
-| Coded Data           | `ORKTextChoice.value`        |
 
 
 ### Drop Down List / Radio Button
