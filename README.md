@@ -115,7 +115,7 @@ Basic Rave Formatting and Validation can be implemented in ResearchKit using the
 | n               | `ORKNumericAnswerFormat.maximum = pow(10, n) - 1`                                                                         |
 | n+              | `ORKNumericAnswerFormat.minimum = pow(10, n-1)` `ORKNumericAnswerFormat.maximum = pow(10,n) - 1`                          |
 
-For more advanced validations, the `[ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html)` can be implemented. This delegate provides methods for finer-grained control over individual steps.
+For more advanced validations, the [ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html) can be implemented. This delegate provides methods for finer-grained control over individual steps.
 
 
 ## Branching Questions / Edit Checks
