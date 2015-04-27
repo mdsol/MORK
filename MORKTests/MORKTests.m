@@ -35,7 +35,6 @@ NSString *todayString;
     [super tearDown];
 }
 
-
 - (void)testChoiceQuestionResultReturnsProperDictionary {
     ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     result.choiceAnswers = @[@"YES"];
@@ -49,7 +48,6 @@ NSString *todayString;
     
     XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
-
 
 - (void)testDateTimeQuestionResultReturnsProperDictionary {
     ORKDateQuestionResult *result = [[ORKDateQuestionResult alloc] initWithIdentifier:@"date"];
