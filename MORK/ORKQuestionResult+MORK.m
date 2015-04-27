@@ -38,8 +38,14 @@
 }
 
 - (NSDateFormatter *) mork_dateFormatter {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    return formatter;
+    static NSDateFormatter *dateFormatter;
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    });
+
+    return dateFormatter;
 }
 @end
