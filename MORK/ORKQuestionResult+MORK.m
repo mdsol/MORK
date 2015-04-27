@@ -8,6 +8,9 @@
 
 #import "ORKQuestionResult+MORK.h"
 
+#define ORKDynamicCast(x, c) ((c *) ([x isKindOfClass:[c class]] ? x : nil))
+
+
 @implementation ORKQuestionResult (MORK)
 - (NSDictionary *)mork_fieldDataDictionary {
     return @{
@@ -18,23 +21,25 @@
 }
 
 - (NSString *)mork_rawResult {
-    NSString *resultString;
+    static NSDictionary *rawResultDictionary;
+    static dispatch_once_t onceToken;
     
-    if([self isKindOfClass:[ORKChoiceQuestionResult class]]) {
-        ORKChoiceQuestionResult *cqResult = (ORKChoiceQuestionResult *) self;
-        resultString = [NSString stringWithFormat:@"%@", cqResult.choiceAnswers.firstObject];
-    }
-    
-    if([self isKindOfClass:[ORKDateQuestionResult class]]) {
-        ORKDateQuestionResult *dResult = (ORKDateQuestionResult *) self;
-        resultString = [[self mork_dateFormatter] stringFromDate:dResult.dateAnswer];
-    }
-    
-    if([self isKindOfClass:[ORKScaleQuestionResult class]]) {
-        ORKScaleQuestionResult *sqResult = (ORKScaleQuestionResult *) self;
-        resultString = [NSString stringWithFormat:@"%@", [sqResult scaleAnswer]];
-    }
-    return resultString;
+    dispatch_once(&onceToken, ^{
+        rawResultDictionary = @{
+                                @"ORKChoiceQuestionResult": ^NSString*(ORKChoiceQuestionResult *result) {
+                                    return [NSString stringWithFormat:@"%@", result.choiceAnswers.firstObject];
+                                },
+                                @"ORKDateQuestionResult": ^NSString*(ORKDateQuestionResult *result) {
+                                    return [[self mork_dateFormatter] stringFromDate:result.dateAnswer];
+                                },
+                                @"ORKScaleQuestionResult": ^NSString*(ORKScaleQuestionResult *result) {
+                                  return [NSString stringWithFormat:@"%@", [result scaleAnswer]];
+                                }
+                                };
+    });
+
+    NSString * (^block)(ORKQuestionResult *) = [rawResultDictionary objectForKey:NSStringFromClass([self class])];
+    return block(self);
 }
 
 - (NSDateFormatter *) mork_dateFormatter {
