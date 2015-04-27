@@ -116,10 +116,6 @@ Basic Rave Formatting and Validation can be implemented in ResearchKit using the
 | $x              | `ORKTextAnswerFormat.maximumLength = x`                                                                                   |
 | n               | `ORKNumericAnswerFormat.maximum = pow(10, n) - 1`                                                                         |
 | n+              | `ORKNumericAnswerFormat.minimum = pow(10, n-1)` `ORKNumericAnswerFormat.maximum = pow(10,n) - 1`                          |
-| Date Formats    | Using specific controls + `style` options allows for selection of just date, date + time, time of day, and time intervals |
-| nn              | `ORKNumericAnswerFormat.minimum = 1` `ORKNumericAnswerFormat.maximum = 59`                                                |
-| ss              | `ORKNumericAnswerFormat.minimum = 1` `ORKNumericAnswerFormat.maximum = 59`                                                |
-| rr              | Can use an ORKValuePickerAnswerFormat to restrict to AM, PM                                                               |
 
 For more advanced validations, the `[ORKStepViewControllerDelegate](https://researchkit.github.io/docs/Protocols/ORKStepViewControllerDelegate.html)` can be implemented. This delegate provides methods for finer-grained control over individual steps.
 
