@@ -1,6 +1,6 @@
 # MORK
 
-MORK is an extension of ResearchKit Objects that facilitates easy serialization of ResearchKit data into the form required by the Patient Cloud Gateway. With MORK, a ResearchKit form can be easily serialized and sent to Rave via the Gateway.
+MORK is an extension of [Apple ResearchKit](https://github.com/ResearchKit/ResearchKit) that facilitates easy serialization of ResearchKit data into the form required by the Patient Cloud Gateway. With MORK, a ResearchKit form can be easily serialized and sent to Rave via the Gateway.
 
 ## Methods
 
