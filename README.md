@@ -1,3 +1,51 @@
+# MORK
+
+MORK is an extension of ResearchKit Objects that facilitates easy serialization of ResearchKit data into the form required by the Patient Cloud Gateway. With MORK, a ResearchKit form can be easily serialized and sent to Rave via the Gateway.
+
+## Methods
+
+MORK adds two methods to ResearchKit objects:
+
+### `[ORKResult mork_fieldDataDictionary]`
+
+Returns an `NSDictionary *` containing the step's result, in the form:
+
+```
+@{
+   @"data_value" : @"<value>",
+   @"item_oid" : @"<step identifier>",
+   @"date_time_entered" : @"<date entered>"  
+}
+```
+
+### `[ORKCollectionResult mork_fieldDataFromResults]`
+
+Returns an `NSArray *` containing the result of `mork_fieldDataDictionary` for each `ORKStepResult` in the `ORKCollectionResult`:
+
+```
+@[
+  @{
+     @"data_value" : @"<value>",
+     @"item_oid" : @"<step identifier>",
+     @"date_time_entered" : @"<date entered>"  
+  },
+  @{
+     @"data_value" : @"<value>",
+     @"item_oid" : @"<step identifier>",
+     @"date_time_entered" : @"<date entered>"  
+  },
+  ...
+]
+```
+
+The `mork_fieldDataFromResults` method can be converted to JSON and sent to the Patient Cloud Gateway to create an entry in Rave.
+
+## Example Project
+
+To run the example project, navigate to the MORKExample folder and run `pod install`. Open MORKExample.xcworkspace and run the project.
+
+The results are collected and serialized in the `taskViewController:didFinishWithReason:error` method of the ViewController.
+
 # Patient Cloud / ResearchKit Integration
 
 ## Common Fields

@@ -37,6 +37,8 @@
     
     
     ORKTaskResult *taskResult = taskViewController.result;
+    NSArray *fieldData = [taskResult mork_fieldDataFromResults];
+    NSLog(@"%@", fieldData);
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Form Completed"
                                                     message:@"Thank you for completing the form!"
