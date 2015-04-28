@@ -6,7 +6,7 @@ MORK is an extension of ResearchKit Objects that facilitates easy serialization 
 
 MORK adds two methods to ResearchKit objects:
 
-### `[ORKResult mork_fieldDataDictionary]`
+#### `[ORKResult mork_fieldDataDictionary]`
 
 Returns an `NSDictionary *` containing the step's result, in the form:
 
@@ -18,7 +18,7 @@ Returns an `NSDictionary *` containing the step's result, in the form:
 }
 ```
 
-### `[ORKCollectionResult mork_fieldDataFromResults]`
+#### `[ORKCollectionResult mork_fieldDataFromResults]`
 
 Returns an `NSArray *` containing the result of `mork_fieldDataDictionary` for each `ORKStepResult` in the `ORKCollectionResult`:
 
