@@ -2,11 +2,11 @@
 
 MORK is an extension of [Apple ResearchKit](https://github.com/ResearchKit/ResearchKit) that facilitates easy serialization of ResearchKit data into the form required by the Patient Cloud Gateway.
 
-## Methods
+## Properties
 
-MORK adds two methods to ResearchKit objects:
+MORK adds a property to the ResearchKit classes `ORKResult` and `ORKCollectionResult` via a Category:
 
-#### `[ORKResult mork_fieldDataDictionary]`
+#### `ORKResult.mork_fieldDataDictionary`
 
 Returns an `NSDictionary *` containing the step's result, in the form:
 
@@ -18,7 +18,7 @@ Returns an `NSDictionary *` containing the step's result, in the form:
 }
 ```
 
-#### `[ORKCollectionResult mork_fieldDataFromResults]`
+#### `ORKCollectionResult.mork_fieldDataFromResults`
 
 Returns an `NSArray *` containing the result of `mork_fieldDataDictionary` for each `ORKStepResult` in the `ORKCollectionResult`:
 
