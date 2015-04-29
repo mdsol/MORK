@@ -38,7 +38,50 @@ Returns an `NSArray *` containing the result of `mork_fieldDataDictionary` for e
 ]
 ```
 
-The `mork_fieldDataFromResults` method can be converted to JSON and sent to the Patient Cloud Gateway to create an entry in Rave.
+The `mork_fieldDataFromResults` property can be converted to JSON and sent to the Patient Cloud Gateway to create an entry in Rave. An example JSON payload is as follows:
+
+```
+{
+  "form_data": {
+    "subject_name": "aabb99",
+    "log_line": 1,
+    "study_uuid": "a2c0da8c-4dfd-4ffd-b3d5-94c762086c2f",
+    "signature_date_time_entered": "2015-27-10T17:04:35",
+    "folder_oid": "SUBJECT",
+    "form_oid": "MYFORM",
+    "field_data": [
+      {
+        "data_value": "M",
+        "item_oid": "GENDER",
+        "date_time_entered": "2015-27-10T17:03:24"
+      },
+      {
+        "data_value": "1990-12-04T20:10:30",
+        "item_oid": "DOB",
+        "date_time_entered": "2015-27-10T17:03:37"
+      },
+      {
+        "data_value": "Sometimes",
+        "item_oid": "EXERCISE_FREQUENCY",
+        "date_time_entered": "2015-27-10T17:03:48"
+      },
+      {
+        "data_value": "7",
+        "item_oid": "PAIN_LEVEL",
+        "date_time_entered": "2015-27-10T17:03:56"
+      }
+    ],
+    "site_oid": "Site",
+    "version": "1.0",
+    "device_id": "DFEBA156-C012-4AD2-957C-9995829BC3A7",
+    "signature_oid": "ACK_FIELD",
+    "rave_url": "http://rave-url.example.com",
+    "study_name": "MyStudy",
+    "record_oid": "PCFORM_LOG_LINE",
+    "subject_uuid": "bfe72729-ab34-4f97-bf03-18ea61fdc92e"
+  }
+}
+```
 
 ## Example Project
 
