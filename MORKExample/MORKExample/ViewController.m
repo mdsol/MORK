@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import <ResearchKit/ResearchKit.h>
 #import <MORK/MORK.h>
-#import <MORK/ORKCollectionResult+MORK.h>
 
 @interface ViewController ()
 @end
@@ -37,6 +36,8 @@
     
     
     ORKTaskResult *taskResult = taskViewController.result;
+    NSArray *fieldData = [taskResult mork_fieldDataFromResults];
+    NSLog(@"%@", fieldData);
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Form Completed"
                                                     message:@"Thank you for completing the form!"
