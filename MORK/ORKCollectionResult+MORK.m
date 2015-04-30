@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Medidata Solutions. All rights reserved.
 //
 
-#import "ORKCollectionResult+MORK.h"
 #import "ORKQuestionResult+MORK.h"
 
 @implementation ORKCollectionResult (MORK)

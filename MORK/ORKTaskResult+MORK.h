@@ -8,6 +8,6 @@
 
 #import "ORKResult.h"
 
-@interface ORKCollectionResult (MORK)
+@interface ORKTaskResult (MORK)
 @property (readonly) NSArray *mork_fieldDataFromResults;
 @end

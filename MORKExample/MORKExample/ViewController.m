@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import <ResearchKit/ResearchKit.h>
 #import <MORK/MORK.h>
-#import <MORK/ORKCollectionResult+MORK.h>
 
 @interface ViewController ()
 @end
