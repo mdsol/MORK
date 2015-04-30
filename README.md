@@ -4,23 +4,11 @@ MORK is an extension of [Apple ResearchKit](https://github.com/ResearchKit/Resea
 
 ## Properties
 
-MORK adds a property to the ResearchKit classes `ORKResult` and `ORKCollectionResult` via a Category:
+MORK adds a property to the ResearchKit `ORKTaskResult` class via a Category:
 
-#### `ORKResult.mork_fieldDataDictionary`
+#### `ORKTaskResult.mork_fieldDataFromResults`
 
-Returns an `NSDictionary *` containing the step's result, in the form:
-
-```
-@{
-   @"data_value" : @"<value>",
-   @"item_oid" : @"<step identifier>",
-   @"date_time_entered" : @"<date entered>"  
-}
-```
-
-#### `ORKCollectionResult.mork_fieldDataFromResults`
-
-Returns an `NSArray *` containing the result of `mork_fieldDataDictionary` for each `ORKStepResult` in the `ORKCollectionResult`:
+Returns an `NSArray *` containing the data, identifier, and date-entered for each `ORKStepResult` in the `ORKTaskResult`:
 
 ```
 @[
