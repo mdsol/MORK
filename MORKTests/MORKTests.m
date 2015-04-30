@@ -46,7 +46,7 @@ NSString *todayString;
                                          @"date_time_entered" : todayString
                                          };
     
-    XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
+    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
 }
 
 - (void)testDateTimeQuestionResultReturnsProperDictionary {
@@ -60,7 +60,7 @@ NSString *todayString;
                                          @"date_time_entered" : todayString
                                          };
     
-    XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
+    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
 }
 
 
@@ -76,7 +76,7 @@ NSString *todayString;
                                          @"date_time_entered" : todayString
                                          };
     
-    XCTAssert([[result mork_fieldDataDictionary] isEqualToDictionary:expectedDictionary]);
+    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
 }
 
 
@@ -108,7 +108,7 @@ NSString *todayString;
                                    }
                                ];
     
-    XCTAssert([[taskResult mork_fieldDataFromResults] isEqualToArray:expectedArray]);
+    XCTAssert([taskResult.mork_fieldDataFromResults isEqualToArray:expectedArray]);
 }
 
 @end
