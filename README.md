@@ -73,9 +73,7 @@ The `mork_fieldDataFromResults` property can be converted to JSON and sent to th
 
 ## Example Project
 
-To run the example project, navigate to the MORKExample folder and run `pod install`. Open MORKExample.xcworkspace and run the project.
-
-The results are collected and serialized in the `taskViewController:didFinishWithReason:error` method of the ViewController.
+Documentation for `MORKExample` can be found [here](./MORKExample/README.md).
 
 # Patient Cloud / ResearchKit Integration
 
