@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import <ResearchKit/ResearchKit.h>
 #import <MORK/MORK.h>
-#import <MORK/ORKCollectionResult+MORK.h>
 
 @interface ViewController ()
 @end
@@ -80,7 +79,6 @@
     NSData *odmData = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObject:params forKey:@"form_data"]
                                                       options:0
                                                         error:nil];
-    
     
     /* 
      Post the results to the Patient Cloud Gateway.
