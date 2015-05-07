@@ -1,5 +1,7 @@
 # MORK
 
+![logo](logo.png)
+
 MORK is an extension of [Apple ResearchKit](https://github.com/ResearchKit/ResearchKit) that facilitates easy serialization of ResearchKit data into the form required by the Patient Cloud Gateway.
 
 ## Properties
