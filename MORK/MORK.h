@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ORKTaskResult+MORK.h"
+#import "ORKCollectionResult+MORK.h"
 #import "ORKQuestionResult+MORK.h"
 
 //! Project version number for MORK.
