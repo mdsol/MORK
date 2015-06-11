@@ -8,11 +8,15 @@ Contact us at mork@mdsol.com
 
 ## Properties
 
-MORK adds a property to the ResearchKit `ORKTaskResult` class via a Category:
+MORK adds a method to the ResearchKit `ORKCollectionResult` class via a
+category:
 
-#### `ORKTaskResult.mork_fieldDataFromResults`
+#### `-(NSArray *)mork_fieldDataFromResults;`
 
-Returns an `NSArray *` containing the data, identifier, and date-entered for each `ORKStepResult` in the `ORKTaskResult`:
+Returns an `NSArray` containing the data, identifier, and date-entered for each
+`ORKStepResult` (if retrieving result data from an instance of `ORKTaskResult`)
+or `ORKQuestionResult` (if retrieving result data from an instance of
+`ORKStepResult`) in the `ORKCollectionResult` subclass:
 
 ```
 @[
@@ -30,7 +34,9 @@ Returns an `NSArray *` containing the data, identifier, and date-entered for eac
 ]
 ```
 
-The `mork_fieldDataFromResults` property can be converted to JSON and sent to the Patient Cloud Gateway to create an entry in Rave. An example JSON payload is as follows:
+The `NSArray` returned from the `mork_getFieldDataFromResults` method can be
+converted to JSON and sent to the Patient Cloud Gateway to create an entry in
+Rave. An example JSON payload is as follows:
 
 ```
 {
