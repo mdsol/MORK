@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage        =   'https://github.com/mdsol/MORK'
   s.source          =   { :git => "https://github.com/mdsol/MORK.git", :tag => s.version.to_s }
   s.source_files    =   'MORK/MORK.h',
-                        'MORK/ORKCollectionResult+MORK.{h,m}',
+                        'MORK/ORKTaskResult+MORK.{h,m}',
                         'MORK/ORKQuestionResult+MORK.{h,m}'
 
   s.ios.deployment_target   = '8.0'

@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2E24DF764572AAC724703618 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1337F25099424D7699175AE5 /* libPods.a */; };
-		527103D91AE9A97500889C98 /* ORKCollectionResult+MORK.h in Headers */ = {isa = PBXBuildFile; fileRef = 527103D71AE9A97500889C98 /* ORKCollectionResult+MORK.h */; };
-		527103DA1AE9A97500889C98 /* ORKCollectionResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 527103D81AE9A97500889C98 /* ORKCollectionResult+MORK.m */; };
-		527103DB1AE9ABBA00889C98 /* ORKCollectionResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 527103D81AE9A97500889C98 /* ORKCollectionResult+MORK.m */; };
+		527103D91AE9A97500889C98 /* ORKTaskResult+MORK.h in Headers */ = {isa = PBXBuildFile; fileRef = 527103D71AE9A97500889C98 /* ORKTaskResult+MORK.h */; };
+		527103DA1AE9A97500889C98 /* ORKTaskResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 527103D81AE9A97500889C98 /* ORKTaskResult+MORK.m */; };
+		527103DB1AE9ABBA00889C98 /* ORKTaskResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 527103D81AE9A97500889C98 /* ORKTaskResult+MORK.m */; };
 		5292A2A51AE93A0800D24393 /* MORK.h in Headers */ = {isa = PBXBuildFile; fileRef = 5292A2A41AE93A0800D24393 /* MORK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5292A2B21AE93A0800D24393 /* MORKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5292A2B11AE93A0800D24393 /* MORKTests.m */; };
 		52C1BD961AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h in Headers */ = {isa = PBXBuildFile; fileRef = 52C1BD941AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h */; };
@@ -33,8 +33,8 @@
 /* Begin PBXFileReference section */
 		1337F25099424D7699175AE5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		527103D31AE99F1900889C98 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
-		527103D71AE9A97500889C98 /* ORKCollectionResult+MORK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ORKCollectionResult+MORK.h"; sourceTree = "<group>"; };
-		527103D81AE9A97500889C98 /* ORKCollectionResult+MORK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ORKCollectionResult+MORK.m"; sourceTree = "<group>"; };
+		527103D71AE9A97500889C98 /* ORKTaskResult+MORK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ORKTaskResult+MORK.h"; sourceTree = "<group>"; };
+		527103D81AE9A97500889C98 /* ORKTaskResult+MORK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ORKTaskResult+MORK.m"; sourceTree = "<group>"; };
 		5292A29F1AE93A0800D24393 /* MORK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MORK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292A2A31AE93A0800D24393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5292A2A41AE93A0800D24393 /* MORK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MORK.h; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 		52EDDD761AE9963B003B0B17 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				527103D71AE9A97500889C98 /* ORKCollectionResult+MORK.h */,
-				527103D81AE9A97500889C98 /* ORKCollectionResult+MORK.m */,
+				527103D71AE9A97500889C98 /* ORKTaskResult+MORK.h */,
+				527103D81AE9A97500889C98 /* ORKTaskResult+MORK.m */,
 				52C1BD941AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h */,
 				52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */,
 			);
@@ -161,7 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5292A2A51AE93A0800D24393 /* MORK.h in Headers */,
-				527103D91AE9A97500889C98 /* ORKCollectionResult+MORK.h in Headers */,
+				527103D91AE9A97500889C98 /* ORKTaskResult+MORK.h in Headers */,
 				52C1BD961AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C1BD971AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m in Sources */,
-				527103DA1AE9A97500889C98 /* ORKCollectionResult+MORK.m in Sources */,
+				527103DA1AE9A97500889C98 /* ORKTaskResult+MORK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C1BD981AEA85900011A1B9 /* ORKQuestionResult+MORK.m in Sources */,
-				527103DB1AE9ABBA00889C98 /* ORKCollectionResult+MORK.m in Sources */,
+				527103DB1AE9ABBA00889C98 /* ORKTaskResult+MORK.m in Sources */,
 				5292A2B21AE93A0800D24393 /* MORKTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
