@@ -10,14 +10,16 @@
 #import <ResearchKit/ResearchKit.h>
 #import <MORK/MORK.h>
 
-@interface ViewController ()
+@interface ViewController () <ORKTaskViewControllerDelegate>
+@property (strong, nonatomic) ORKTaskViewController *taskViewController;
 @end
 
 @implementation ViewController
 
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
     ORKOrderedTask *task  = [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:[self createSteps]];
     self.taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
     
@@ -29,7 +31,7 @@
     [self presentViewController:self.taskViewController animated:YES completion:nil];
 }
 
-
+#pragma mark - ORKTaskViewControllerDelegate
 - (void)taskViewController:(ORKTaskViewController *)taskViewController
        didFinishWithReason:(ORKTaskViewControllerFinishReason)reason
                      error:(NSError *)error {
@@ -63,8 +65,8 @@
                                                          error:&jError];
     [request setHTTPBody:postData];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if(error) {
-            NSLog(@"error %@", [error localizedDescription]);
+        if (error) {
+            NSLog(@"error %@", error.localizedDescription);
         } else {
             NSLog(@"success!");
         }
@@ -75,8 +77,8 @@
      Extract data from the ORKTaskResult and serialize it in the format expected by the Patient Cloud Gateway.
      */
     NSMutableDictionary *params = [self odmParameters];
-    [params setObject:[taskViewController.result mork_fieldDataFromResults] forKey:@"field_data"];
-    NSData *odmData = [NSJSONSerialization dataWithJSONObject:[NSDictionary dictionaryWithObject:params forKey:@"form_data"]
+    params[@"field_data"] = [taskViewController.result mork_fieldDataFromResults];
+    NSData *odmData = [NSJSONSerialization dataWithJSONObject:@{@"form_data": params}
                                                       options:0
                                                         error:nil];
     
@@ -86,8 +88,8 @@
     [request setURL:[NSURL URLWithString:@"https://epro-url.imedidata.net/api/odm"]];
     [request setHTTPBody:odmData];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if(error) {
-            NSLog(@"error %@", [error localizedDescription]);
+        if (error) {
+            NSLog(@"error %@", error.localizedDescription);
         } else {
             NSLog(@"success!");
         }
@@ -106,8 +108,8 @@
     [alert show];
 }
 
-
--(NSData *) authenticationJSON {
+#pragma mark - Private Methods
+- (NSData *)authenticationJSON {
     NSDictionary *json = @{@"password" : @{@"primary_password" : @"Password"}};
     NSError *jError;
     NSData *postData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&jError];
@@ -115,28 +117,27 @@
 }
 
 
--(NSMutableDictionary *) odmParameters {
-    NSDictionary *params = @{
-                             @"subject_name": @"SB01",
-                             @"study_uuid": @"e018fcb9-e06a-4ecb-8496-7af5af03b0b2",
-                             @"signature_date_time_entered": @"2014-12-10T17:03:24",
-                             @"folder_oid": @"SCREEN",
-                             @"form_oid": @"MORK_FRM",
-                             @"site_oid": @"site1",
-                             @"version": @"1.0",
-                             @"device_id": @"3FC94B89-920C-412A-BB9D-BFA9DF40F1B1",
-                             @"rave_url": @"https://my-rave-url.mdsol.com",
-                             @"study_name": @"MyStudyName",
-                             @"subject_uuid": @"ba86d135-0f64-42a9-a45c-89087eb44fbe",
-                             @"record_oid": @"MORK_FRM_LOG_LINE",
-                             @"log_line": @1
-                             };
-    
+- (NSMutableDictionary *)odmParameters {
+    NSDictionary *params = @{@"subject_name"                : @"SB01",
+                             @"study_uuid"                  : @"e018fcb9-e06a-4ecb-8496-7af5af03b0b2",
+                             @"signature_date_time_entered" : @"2014-12-10T17:03:24",
+                             @"folder_oid"                  : @"SCREEN",
+                             @"form_oid"                    : @"MORK_FRM",
+                             @"site_oid"                    : @"site1",
+                             @"version"                     : @"1.0",
+                             @"device_id"                   : @"3FC94B89-920C-412A-BB9D-BFA9DF40F1B1",
+                             @"rave_url"                    : @"https://my-rave-url.mdsol.com",
+                             @"study_name"                  : @"MyStudyName",
+                             @"subject_uuid"                : @"ba86d135-0f64-42a9-a45c-89087eb44fbe",
+                             @"record_oid"                  : @"MORK_FRM_LOG_LINE",
+                             @"log_line"                    : @1};
+
     return [NSMutableDictionary dictionaryWithDictionary:params];
 }
 
 
--(NSMutableArray *) createSteps {
+- (NSMutableArray *)createSteps {
+
     NSMutableArray *steps = [NSMutableArray new];
     
     
