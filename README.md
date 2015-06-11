@@ -11,7 +11,7 @@ Contact us at mork@mdsol.com
 MORK adds a method to the ResearchKit `ORKCollectionResult` class via a
 category:
 
-#### `-(NSArray *)mork_fieldDataFromResults;`
+#### `-(NSArray *)mork_getFieldDataFromResults;`
 
 Returns an `NSArray` containing the data, identifier, and date-entered for each
 `ORKStepResult` (if retrieving result data from an instance of `ORKTaskResult`)
