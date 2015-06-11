@@ -77,7 +77,7 @@
      Extract data from the ORKTaskResult and serialize it in the format expected by the Patient Cloud Gateway.
      */
     NSMutableDictionary *params = [self odmParameters];
-    params[@"field_data"] = [taskViewController.result mork_fieldDataFromResults];
+    params[@"field_data"] = [taskViewController.result mork_getFieldDataFromResults];
     NSData *odmData = [NSJSONSerialization dataWithJSONObject:@{@"form_data": params}
                                                       options:0
                                                         error:nil];
