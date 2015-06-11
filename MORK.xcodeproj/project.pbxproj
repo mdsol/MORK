@@ -17,7 +17,6 @@
 		52C1BD971AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */; };
 		52C1BD981AEA85900011A1B9 /* ORKQuestionResult+MORK.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */; };
 		52EDDD751AE995CF003B0B17 /* MORK.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 52EDDD741AE995CF003B0B17 /* MORK.podspec */; };
-		52EDDD781AE99920003B0B17 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 52EDDD771AE99920003B0B17 /* Podfile */; };
 		EF04460B7DFDB2EA95ECEDAA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1337F25099424D7699175AE5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +44,6 @@
 		52C1BD941AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ORKQuestionResult+MORK.h"; sourceTree = "<group>"; };
 		52C1BD951AEA7D6C0011A1B9 /* ORKQuestionResult+MORK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ORKQuestionResult+MORK.m"; sourceTree = "<group>"; };
 		52EDDD741AE995CF003B0B17 /* MORK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MORK.podspec; sourceTree = "<group>"; };
-		52EDDD771AE99920003B0B17 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		646A9F3CF799CE9588C7F1D9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9E63FF4414164547636197E0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,7 +80,6 @@
 		5292A2951AE93A0800D24393 = {
 			isa = PBXGroup;
 			children = (
-				52EDDD771AE99920003B0B17 /* Podfile */,
 				52EDDD741AE995CF003B0B17 /* MORK.podspec */,
 				5292A2A11AE93A0800D24393 /* MORK */,
 				5292A2AE1AE93A0800D24393 /* MORKTests */,
@@ -252,7 +249,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52EDDD781AE99920003B0B17 /* Podfile in Resources */,
 				52EDDD751AE995CF003B0B17 /* MORK.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
