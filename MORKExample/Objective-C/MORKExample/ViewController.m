@@ -59,10 +59,8 @@
     /*
      Authenticate the user with the Patient Cloud Gateway.
      */
-    NSError *jError;
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:@{@"password" : @{@"primary_password" : @"Password"}}
-                                                       options:0
-                                                         error:&jError];
+    NSData *postData = [self authenticationJSON];
+    
     [request setHTTPBody:postData];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
@@ -109,6 +107,14 @@
 }
 
 #pragma mark - Private Methods
+- (NSData *)authenticationJSON
+{
+    NSDictionary *json = @{@"password" : @{@"primary_password" : @"Password"}};
+    NSError *jError;
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&jError];
+    return postData;
+}
+
 - (NSMutableDictionary *)odmParameters {
     NSDictionary *params = @{@"subject_name"                : @"SB01",
                              @"study_uuid"                  : @"e018fcb9-e06a-4ecb-8496-7af5af03b0b2",

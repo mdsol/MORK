@@ -22,7 +22,7 @@
     [super setUp];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"dd-MM-yyyy hh:mm:ss";
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'hh:mm:ss";
     self.today = [NSDate date];
     self.todayString = [dateFormatter stringFromDate:self.today];
 }
