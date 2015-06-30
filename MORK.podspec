@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version         =   '0.0.1'
   s.summary         =   "Extends Apple's ResearchKit to integrate with the Medidata Patient Cloud Gateway"
   s.homepage        =   'https://github.com/mdsol/MORK'
-  s.source          =   { :git => "https://github.com/mdsol/MORK.git", :tag => s.version.to_s }
+  s.source          =   { git: 'https://github.com/mdsol/MORK.git', :tag => s.version.to_s }
   s.source_files    =   'MORK/MORK.h',
                         'MORK/ORKTaskResult+MORK.{h,m}',
                         'MORK/ORKQuestionResult+MORK.{h,m}'
