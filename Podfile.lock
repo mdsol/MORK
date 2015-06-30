@@ -1,7 +1,7 @@
 PODS:
   - MORK (0.0.1):
     - ResearchKit
-  - ResearchKit (1.0.0)
+  - ResearchKit (1.1.2)
 
 DEPENDENCIES:
   - MORK (from `.`)
@@ -12,6 +12,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MORK: 946f7d0e7db53dae8ba32ec6edeec98c67f186e7
-  ResearchKit: 86f9101e2091007006a06999fc2376cc42b2243b
+  ResearchKit: db2c5ff1dfe851cec9183b7c3dbc93d7373e6880
 
 COCOAPODS: 0.37.2
