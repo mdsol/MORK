@@ -25,7 +25,7 @@ NSString *todayString;
 - (void)setUp {
     [super setUp];
     dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy hh:mm:ss"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss"];
     today = [NSDate date];
     todayString = [dateFormatter stringFromDate:today];
 }

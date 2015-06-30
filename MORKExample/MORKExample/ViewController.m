@@ -57,10 +57,7 @@
     /*
      Authenticate the user with the Patient Cloud Gateway.
      */
-    NSError *jError;
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:@{@"password" : @{@"primary_password" : @"Password"}}
-                                                       options:0
-                                                         error:&jError];
+    NSData *postData = [self authenticationJSON];
     [request setHTTPBody:postData];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if(error) {
@@ -191,7 +188,7 @@
         Patient Cloud: VAS, NRS
      */
     {
-        ORKScaleAnswerFormat *scaleFormat = [[ORKScaleAnswerFormat alloc] initWithMaximumValue:10 minimumValue:1 step:1 defaultValue:5];
+        ORKScaleAnswerFormat *scaleFormat = [[ORKScaleAnswerFormat alloc] initWithMaximumValue:10 minimumValue:1 defaultValue:5 step:1];
         ORKQuestionStep *step = [ORKQuestionStep questionStepWithIdentifier:@"PAIN_LEVEL" title:@"How much pain do you feel in your arm?" answer:scaleFormat];
         [steps addObject:step];
     }
