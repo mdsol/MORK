@@ -57,10 +57,7 @@
     /*
      Authenticate the user with the Patient Cloud Gateway.
      */
-    NSError *jError;
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:@{@"password" : @{@"primary_password" : @"Password"}}
-                                                       options:0
-                                                         error:&jError];
+    NSData *postData = [self authenticationJSON];
     [request setHTTPBody:postData];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if(error) {
