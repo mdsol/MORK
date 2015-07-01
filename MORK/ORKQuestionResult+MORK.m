@@ -11,7 +11,7 @@
 @implementation ORKQuestionResult (MORK)
 
 #pragma mark - Public Methods
-- (NSDictionary *)mork_fieldDataDictionary {
+- (NSDictionary *)mork_getFieldDataDictionary {
     return @{@"data_value"          : [self mork_rawResult],
              @"item_oid"            : self.identifier,
              @"date_time_entered"   : [[self mork_dateFormatter] stringFromDate:self.endDate]};
@@ -30,7 +30,7 @@
                                     return [[self mork_dateFormatter] stringFromDate:result.dateAnswer];
                                 },
                                 @"ORKScaleQuestionResult": ^NSString*(ORKScaleQuestionResult *result) {
-                                  return [NSString stringWithFormat:@"%@", [result scaleAnswer]];
+                                  return [NSString stringWithFormat:@"%@", result.scaleAnswer];
                                 }};
     });
 

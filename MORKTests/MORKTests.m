@@ -40,7 +40,7 @@
                                          @"item_oid"            : @"choice",
                                          @"date_time_entered"   : self.todayString};
 
-    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
+    XCTAssert([[result mork_getFieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 - (void)testDateTimeQuestionResultReturnsProperDictionary {
@@ -52,7 +52,7 @@
                                          @"item_oid"            : @"date",
                                          @"date_time_entered"   : self.todayString};
 
-    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
+    XCTAssert([[result mork_getFieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 
@@ -66,7 +66,7 @@
                                          @"item_oid"            : @"scale",
                                          @"date_time_entered"   : self.todayString};
 
-    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
+    XCTAssert([[result mork_getFieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 
@@ -92,7 +92,7 @@
                                  @"item_oid"            : @"scale",
                                  @"date_time_entered"   : self.todayString}];
 
-    XCTAssert([taskResult.mork_fieldDataFromResults isEqualToArray:expectedArray]);
+    XCTAssert([[taskResult mork_getFieldDataFromResults] isEqualToArray:expectedArray]);
 }
 
 @end
