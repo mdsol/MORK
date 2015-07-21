@@ -60,7 +60,6 @@
      Authenticate the user with the Patient Cloud Gateway.
      */
     NSData *postData = [self authenticationJSON];
-    
     [request setHTTPBody:postData];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
