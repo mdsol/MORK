@@ -1,0 +1,17 @@
+PODS:
+  - MORK (0.0.1):
+    - ResearchKit
+  - ResearchKit (1.1.2)
+
+DEPENDENCIES:
+  - MORK (from `./../../`)
+
+EXTERNAL SOURCES:
+  MORK:
+    :path: "./../../"
+
+SPEC CHECKSUMS:
+  MORK: a3dd4b81f8ded045629322e0155a7970568cb887
+  ResearchKit: db2c5ff1dfe851cec9183b7c3dbc93d7373e6880
+
+COCOAPODS: 0.37.2

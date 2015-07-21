@@ -1,4 +1,5 @@
 Pods/
 xcuserdata/
 MORK.xcworkspace/
-MORKExample/MORKExample.xcworkspace/
+MORKExample/Objective-C/MORKExample.xcworkspace/
+MORKExample/Swift/MORKExample.xcworkspace/

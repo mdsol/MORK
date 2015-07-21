@@ -12,24 +12,20 @@
 #import <MORK/MORK.h>
 
 @interface MORKTests : XCTestCase
-
+@property (strong, nonatomic) NSDate *today;
+@property (copy, nonatomic) NSString *todayString;
 @end
 
 @implementation MORKTests
 
-NSDateFormatter *dateFormatter;
-NSDate *today;
-NSString *todayString;
-
-
 - (void)setUp {
     [super setUp];
-    dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss"];
-    today = [NSDate date];
-    todayString = [dateFormatter stringFromDate:today];
-}
 
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'hh:mm:ss";
+    self.today = [NSDate date];
+    self.todayString = [dateFormatter stringFromDate:self.today];
+}
 
 - (void)tearDown {
     [super tearDown];
@@ -38,77 +34,65 @@ NSString *todayString;
 - (void)testChoiceQuestionResultReturnsProperDictionary {
     ORKChoiceQuestionResult *result = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     result.choiceAnswers = @[@"YES"];
-    result.endDate = today;
+    result.endDate = self.today;
 
-    NSDictionary *expectedDictionary = @{
-                                         @"data_value" : @"YES",
-                                         @"item_oid" : @"choice",
-                                         @"date_time_entered" : todayString
-                                         };
-    
-    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
+    NSDictionary *expectedDictionary = @{@"data_value"          : @"YES",
+                                         @"item_oid"            : @"choice",
+                                         @"date_time_entered"   : self.todayString};
+
+    XCTAssert([[result mork_getFieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 - (void)testDateTimeQuestionResultReturnsProperDictionary {
     ORKDateQuestionResult *result = [[ORKDateQuestionResult alloc] initWithIdentifier:@"date"];
-    result.dateAnswer = today;
-    result.endDate = today;
-    
-    NSDictionary *expectedDictionary = @{
-                                         @"data_value" : todayString,
-                                         @"item_oid" : @"date",
-                                         @"date_time_entered" : todayString
-                                         };
-    
-    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
+    result.dateAnswer = self.today;
+    result.endDate = self.today;
+
+    NSDictionary *expectedDictionary = @{@"data_value"          : self.todayString,
+                                         @"item_oid"            : @"date",
+                                         @"date_time_entered"   : self.todayString};
+
+    XCTAssert([[result mork_getFieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 
 - (void)testScaleQuestionResultReturnsProperDictionary {
     ORKScaleQuestionResult *result = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
-    
+
     result.scaleAnswer = @10;
-    result.endDate = today;
-    
-    NSDictionary *expectedDictionary = @{
-                                         @"data_value" : @"10",
-                                         @"item_oid" : @"scale",
-                                         @"date_time_entered" : todayString
-                                         };
-    
-    XCTAssert([result.mork_fieldDataDictionary isEqualToDictionary:expectedDictionary]);
+    result.endDate = self.today;
+
+    NSDictionary *expectedDictionary = @{@"data_value"          : @"10",
+                                         @"item_oid"            : @"scale",
+                                         @"date_time_entered"   : self.todayString};
+
+    XCTAssert([[result mork_getFieldDataDictionary] isEqualToDictionary:expectedDictionary]);
 }
 
 
 - (void)testNestedTaskResultsReturnsFieldDataArray {
-    
+
     ORKChoiceQuestionResult *qResult = [[ORKChoiceQuestionResult alloc] initWithIdentifier:@"choice"];
     qResult.choiceAnswers = @[@"YES"];
-    qResult.endDate = today;
-    
+    qResult.endDate = self.today;
+
     ORKScaleQuestionResult *sResult = [[ORKScaleQuestionResult alloc] initWithIdentifier:@"scale"];
     sResult.scaleAnswer = @10;
-    qResult.endDate = today;
-    
+    qResult.endDate = self.today;
+
     ORKStepResult *stepResult = [[ORKStepResult alloc] initWithStepIdentifier:@"steps" results:@[qResult, sResult]];
 
     ORKTaskResult *taskResult = [[ORKTaskResult alloc] initWithIdentifier:@"task"];
     taskResult.results = @[stepResult];
-    
-    NSArray *expectedArray = @[
-                               @{
-                                   @"data_value" : @"YES",
-                                   @"item_oid" : @"choice",
-                                   @"date_time_entered" : todayString
-                                   },
-                               @{
-                                   @"data_value" : @"10",
-                                   @"item_oid" : @"scale",
-                                   @"date_time_entered" : todayString
-                                   }
-                               ];
-    
-    XCTAssert([taskResult.mork_fieldDataFromResults isEqualToArray:expectedArray]);
+
+    NSArray *expectedArray = @[@{@"data_value"          : @"YES",
+                                 @"item_oid"            : @"choice",
+                                 @"date_time_entered"   : self.todayString},
+                               @{@"data_value"          : @"10",
+                                 @"item_oid"            : @"scale",
+                                 @"date_time_entered"   : self.todayString}];
+
+    XCTAssert([[taskResult mork_getFieldDataFromResults] isEqualToArray:expectedArray]);
 }
 
 @end
