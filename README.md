@@ -6,7 +6,7 @@ MORK is an extension of [Apple ResearchKit](https://github.com/ResearchKit/Resea
 
 Contact us at mork@mdsol.com
 
-## Properties
+## Methods
 
 MORK adds a method to the ResearchKit `ORKCollectionResult` class via a
 category:
