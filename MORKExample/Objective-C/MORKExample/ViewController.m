@@ -22,7 +22,7 @@
 
     ORKOrderedTask *task  = [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:[self createSteps]];
     self.taskViewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
-    
+
     self.taskViewController.delegate = self;
 }
 
@@ -35,14 +35,14 @@
 - (void)taskViewController:(ORKTaskViewController *)taskViewController
        didFinishWithReason:(ORKTaskViewControllerFinishReason)reason
                      error:(NSError *)error {
-    
+
     /*
      Construct the session used for the authentication and form submission.
      */
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    
-    
+
+
     /*
      Setup Basic authentication
      */
@@ -54,15 +54,13 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:authValue forHTTPHeaderField:@"Authorization"];
     [request setHTTPMethod:@"POST"];
-    
-    
+
+
     /*
      Authenticate the user with the Patient Cloud Gateway.
      */
-    NSError *jError;
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:@{@"password" : @{@"primary_password" : @"Password"}}
-                                                       options:0
-                                                         error:&jError];
+    NSData *postData = [self authenticationJSON];
+    
     [request setHTTPBody:postData];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
@@ -71,8 +69,8 @@
             NSLog(@"success!");
         }
     }] resume];
-    
-    
+
+
     /*
      Extract data from the ORKTaskResult and serialize it in the format expected by the Patient Cloud Gateway.
      */
@@ -81,8 +79,8 @@
     NSData *odmData = [NSJSONSerialization dataWithJSONObject:@{@"form_data": params}
                                                       options:0
                                                         error:nil];
-    
-    /* 
+
+    /*
      Post the results to the Patient Cloud Gateway.
      */
     [request setURL:[NSURL URLWithString:@"https://epro-url.imedidata.net/api/odm"]];
@@ -94,8 +92,8 @@
             NSLog(@"success!");
         }
     }] resume];
-    
-    
+
+
     /*
      Show the user an alert thanking them for taking the form.
      */
@@ -104,18 +102,18 @@
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
-    
+
     [alert show];
 }
 
 #pragma mark - Private Methods
-- (NSData *)authenticationJSON {
+- (NSData *)authenticationJSON
+{
     NSDictionary *json = @{@"password" : @{@"primary_password" : @"Password"}};
     NSError *jError;
     NSData *postData = [NSJSONSerialization dataWithJSONObject:json options:0 error:&jError];
     return postData;
 }
-
 
 - (NSMutableDictionary *)odmParameters {
     NSDictionary *params = @{@"subject_name"                : @"SB01",
@@ -136,17 +134,16 @@
 }
 
 
-- (NSMutableArray *)createSteps {
+- (NSArray *)createSteps {
 
     NSMutableArray *steps = [NSMutableArray new];
-    
-    
+
     {
         ORKInstructionStep *step = [[ORKInstructionStep alloc] initWithIdentifier:@"intro"];
         step.title = @"Welcome to ResearchKit";
         [steps addObject:step];
     }
-    
+
     /*
      Corresponding control types:
         Rave Architect: Drop Down List, Radio Button
@@ -159,9 +156,9 @@
         ORKQuestionStep *step = [ORKQuestionStep questionStepWithIdentifier:@"GENDER" title:@"Gender" answer:textFormat];
         [steps addObject:step];
     }
-    
+
     /*
-     Corresponding control types: 
+     Corresponding control types:
         Rave Architect: Date Time
         Patient Cloud: Date Time
      */
@@ -170,9 +167,9 @@
         ORKQuestionStep *step = [ORKQuestionStep questionStepWithIdentifier: @"DOB" title: @"When were you born?" answer: dateFormat];
         [steps addObject:step];
     }
-    
+
     /*
-     Corresponding control types: 
+     Corresponding control types:
         Rave Architect: Drop Down List, Radio Button
         Patient Cloud: Dictionary
      */
@@ -185,7 +182,7 @@
         ORKQuestionStep *step = [ORKQuestionStep questionStepWithIdentifier:@"EXERCISE" title:@"How often do you exercise?" answer:textFormat];
         [steps addObject:step];
     }
-    
+
     /*
      Corresponding control types:
         Rave Architect: Text
@@ -196,8 +193,8 @@
         ORKQuestionStep *step = [ORKQuestionStep questionStepWithIdentifier:@"PAIN_LEVEL" title:@"How much pain do you feel in your arm?" answer:scaleFormat];
         [steps addObject:step];
     }
-    
-    return steps;
+
+    return [steps copy];
 }
 
 @end

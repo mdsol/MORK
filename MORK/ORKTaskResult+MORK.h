@@ -1,5 +1,5 @@
 //
-//  ORKCollectionResult+MORK.h
+//  ORKTaskResult+MORK.h
 //  MORK
 //
 //  Created by Nolan Carroll on 4/23/15.
