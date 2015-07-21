@@ -6,7 +6,7 @@ MORK is an extension of [Apple ResearchKit](https://github.com/ResearchKit/Resea
 
 Contact us at mork@mdsol.com
 
-## Properties
+## Methods
 
 MORK adds a method to the ResearchKit `ORKCollectionResult` class via a
 category:
@@ -81,9 +81,10 @@ Rave. An example JSON payload is as follows:
 }
 ```
 
-## Example Project
+## `MORKExample` Example Project Documentation
 
-Documentation for `MORKExample` can be found [here](./MORKExample/README.md).
+- [Objective-C](/MORKExample/Objective-C/README.md)
+- [Swift](/MORKExample/Swift/README.md)
 
 # Patient Cloud / ResearchKit Integration
 
