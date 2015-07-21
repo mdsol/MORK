@@ -83,8 +83,8 @@ Rave. An example JSON payload is as follows:
 
 ## `MORKExample` Example Project Documentation
 
-- [Objective-C](/MORKExample/Objective-C/README.md).
-- [Swift](/MORKExample/Swift/README.md).
+- [Objective-C](/MORKExample/Objective-C/README.md)
+- [Swift](/MORKExample/Swift/README.md)
 
 # Patient Cloud / ResearchKit Integration
 
